@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareHive Philippines - Family Onboarding</title>
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+    }
+    
+    /* Header styles */
+    .header {
+      background-color: #fff;
+      padding: 15px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #4a8ef1;
+    }
+    
+    .logo span {
+      color: #ff754e;
+    }
+    
+    /* Container */
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 40px;
+    }
+    
+    /* Progress bar */
+    .progress-container {
+      margin: 20px 0 30px;
+    }
+    
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 30px;
+    }
+    
+    .progress-steps::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #ddd;
+      z-index: 1;
+    }
+    
+    .progress-step {
+      position: relative;
+      z-index: 2;
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      color: #888;
+    }
+    
+    .progress-step.active {
+      background-color: #4a8ef1;
+      border-color: #4a8ef1;
+      color: white;
+    }
+    
+    .progress-step.completed {
+      background-color: #4a8ef1;
+      border-color: #4a8ef1;
+      color: white;
+    }
+    
+    .progress-step-label {
+      position: absolute;
+      top: 40px;
+      width: 100px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-left: -35px;
+    }
+    
+    .progress-bar {
+      position: relative;
+      height: 6px;
+      background-color: #ddd;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    
+    .progress-bar-fill {
+      position: absolute;
+      height: 100%;
+      background-color: #4a8ef1;
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+    
+    /* Onboarding card */
+    .onboarding-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+    
+    .card-title {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .card-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.4;
+    }
+    
+    /* Form styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #444;
+      font-weight: 500;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.2s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #4a8ef1;
+      box-shadow: 0 0 0 2px rgba(74, 142, 241, 0.1);
+    }
+    
+    .form-helper {
+      font-size: 12px;
+      color: #888;
+      margin-top: 5px;
+    }
+    
+    .form-error {
+      font-size: 12px;
+      color: #ff4d4d;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    /* Button styles */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    
+    .button-primary {
+      background-color: #4a8ef1;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+    }
+    
+    .button-secondary {
+      background-color: transparent;
+      color: #4a8ef1;
+      border: 1px solid #4a8ef1;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+    }
+    
+    /* Welcome screen */
+    .welcome-image {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 30px;
+      height: auto;
+    }
+    
+    .welcome-title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .welcome-text {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    
+    /* Select care type */
+    .care-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .care-option {
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .care-option:hover {
+      border-color: #b3d1ff;
+    }
+    
+    .care-option.selected {
+      border-color: #4a8ef1;
+      background-color: #f0f7ff;
+    }
+    
+    .care-icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    
+    .care-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .care-description {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    /* Family profile */
+    .add-member-button {
+      background-color: transparent;
+      border: 1px dashed #4a8ef1;
+      border-radius: 6px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      font-size: 14px;
+      color: #4a8ef1;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    
+    .family-member {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    
+    .member-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #e1ebff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4a8ef1;
+      font-weight: bold;
+    }
+    
+    .member-info {
+      flex: 1;
+    }
+    
+    .member-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .member-relation {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .remove-member {
+      color: #ff5252;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    
+    /* Success screen */
+    .success-icon {
+      font-size: 60px;
+      color: #4CAF50;
+      display: block;
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    /* Show specific step */
+    .step-content {
+      display: none;
+    }
+    
+    .step-content.active {
+      display: block;
+    }
+    
+    /* Mobile number input */
+    .mobile-input-container {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .country-code {
+      width: 80px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #f9f9f9;
+    }
+    
+    .mobile-input {
+      flex: 1;
+    }
+    
+    /* Address fields */
+    .address-fields {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    
+    .address-full {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">Care<span>Hive</span></div>
+  </div>
+  
+  <!-- Main content -->
+  <div class="container">
+    <!-- Progress indicator -->
+    <div class="progress-container">
+      <div class="progress-steps">
+        <div class="progress-step completed" data-step="1">
+          1
+          <div class="progress-step-label">Welcome</div>
+        </div>
+        <div class="progress-step active" data-step="2">
+          2
+          <div class="progress-step-label">Account</div>
+        </div>
+        <div class="progress-step" data-step="3">
+          3
+          <div class="progress-step-label">Care Needs</div>
+        </div>
+        <div class="progress-step" data-step="4">
+          4
+          <div class="progress-step-label">Profile</div>
+        </div>
+        <div class="progress-step" data-step="5">
+          5
+          <div class="progress-step-label">Finish</div>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: 30%;"></div>
+      </div>
+    </div>
+    
+    <!-- Step 1: Welcome Screen -->
+    <div class="step-content" id="step-1">
+      <div class="onboarding-card">
+        <img src="/api/placeholder/300/200" alt="Welcome to CareHive" class="welcome-image">
+        <h1 class="welcome-title">Welcome to CareHive</h1>
+        <p class="welcome-text">The trusted platform for finding and managing care services for your loved ones in the Philippines.</p>
+        <div class="button-container" style="justify-content: center;">
+          <button class="button-primary next-step">Get Started</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Step 2: Create Account -->
+    <div class="step-content active" id="step-2">
+      <div class="onboarding-card">
+        <h2 class="card-title">Create Your Account</h2>
+        <p class="card-subtitle">Fill in your details to create a CareHive account.</p>
+        
+        <form>
+          <div class="form-group">
+            <label class="form-label" for="fullname">Full Name</label>
+            <input type="text" id="fullname" class="form-input" placeholder="Enter your full name">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" id="email" class="form-input" placeholder="your.email@example.com">
+            <div class="form-helper">We'll send a verification code to this email</div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="mobile">Mobile Number</label>
+            <div class="mobile-input-container">
+              <select class="country-code">
+                <option value="+63">+63</option>
+              </select>
+              <input type="tel" id="mobile" class="form-input mobile-input" placeholder="9XX XXX XXXX">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" class="form-input" placeholder="Create a password">
+            <div class="form-helper">Must be at least 8 characters with a number and special character</div>
+            <div class="form-error">Password must meet the requirements</div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" class="form-input" placeholder="Confirm your password">
+          </div>
+        </form>
+        
+        <div class="button-container">
+          <button class="button-secondary prev-step">Back</button>
+          <button class="button-primary next-step">Continue</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Step 3: Care Needs -->
+    <div class="step-content" id="step-3">
+      <div class="onboarding-card">
+        <h2 class="card-title">Select Care Services</h2>
+        <p class="card-subtitle">What type of care services are you looking for? Select all that apply.</p>
+        
+        <div class="care-options">
+          <div class="care-option" data-type="elderly">
+            <div class="care-icon">👵</div>
+            <div class="care-name">Elderly Care</div>
+            <div class="care-description">For seniors who need assistance</div>
+          </div>
+          
+          <div class="care-option" data-type="child">
+            <div class="care-icon">👶</div>
+            <div class="care-name">Child Care</div>
+            <div class="care-description">For children of all ages</div>
+          </div>
+          
+          <div class="care-option" data-type="special">
+            <div class="care-icon">♿</div>
+            <div class="care-name">Special Needs</div>
+            <div class="care-description">For those with special requirements</div>
+          </div>
+          
+          <div class="care-option" data-type="health">
+            <div class="care-icon">🩺</div>
+            <div class="care-name">Healthcare</div>
+            <div class="care-description">Medical assistance and therapy</div>
+          </div>
+          
+          <div class="care-option" data-type="housekeeping">
+            <div class="care-icon">🧹</div>
+            <div class="care-name">Housekeeping</div>
+            <div class="care-description">Home cleaning and maintenance</div>
+          </div>
+          
+          <div class="care-option" data-type="other">
+            <div class="care-icon">➕</div>
+            <div class="care-name">Other</div>
+            <div class="care-description">Custom care requirements</div>
+          </div>
+        </div>
+        
+        <div class="button-container">
+          <button class="button-secondary prev-step">Back</button>
+          <button class="button-primary next-step">Continue</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Step 4: Family Profile -->
+    <div class="step-content" id="step-4">
+      <div class="onboarding-card">
+        <h2 class="card-title">Family Profile</h2>
+        <p class="card-subtitle">Add your address and family members who will need care.</p>
+        
+        <form>
+          <div class="form-group">
+            <label class="form-label">Home Address</label>
+            <input type="text" class="form-input address-full" placeholder="House/Unit Number, Street Name">
+            <div class="address-fields" style="margin-top: 10px;">
+              <input type="text" class="form-input" placeholder="Barangay">
+              <input type="text" class="form-input" placeholder="City/Municipality">
+            </div>
+            <div class="address-fields" style="margin-top: 10px;">
+              <input type="text" class="form-input" placeholder="Province">
+              <input type="text" class="form-input" placeholder="Postal Code">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Family Members</label>
+            <div class="family-member">
+              <div class="member-avatar">JD</div>
+              <div class="member-info">
+                <div class="member-name">John Dela Cruz</div>
+                <div class="member-relation">Self</div>
+              </div>
+            </div>
+            
+            <div class="family-member">
+              <div class="member-avatar">AM</div>
+              <div class="member-info">
+                <div class="member-name">Anita Maligaya</div>
+                <div class="member-relation">Mother</div>
+              </div>
+              <div class="remove-member">Remove</div>
+            </div>
+            
+            <button type="button" class="add-member-button">
+              <span>+</span> Add Family Member
+            </button>
+          </div>
+        </form>
+        
+        <div class="button-container">
+          <button class="button-secondary prev-step">Back</button>
+          <button class="button-primary next-step">Continue</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Step 5: Success Screen -->
+    <div class="step-content" id="step-5">
+      <div class="onboarding-card">
+        <div class="success-icon">✓</div>
+        <h2 class="card-title" style="text-align: center;">All Set!</h2>
+        <p class="card-subtitle" style="text-align: center;">Your CareHive account has been created successfully. You're now ready to find and book care services.</p>
+        
+        <div class="button-container" style="justify-content: center;">
+            <a href="dashboard.html">
+            <button class="button-primary">Get Started</button>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Navigation between steps
+      const nextButtons = document.querySelectorAll('.next-step');
+      const prevButtons = document.querySelectorAll('.prev-step');
+      const progressSteps = document.querySelectorAll('.progress-step');
+      const progressBar = document.querySelector('.progress-bar-fill');
+      const stepContents = document.querySelectorAll('.step-content');
+      
+      let currentStep = 2; // Start at step 2 for this demo
+      
+      nextButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          if (currentStep < 5) {
+            // Hide current step
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            
+            // Update progress
+            progressSteps[currentStep-1].classList.remove('active');
+            progressSteps[currentStep-1].classList.add('completed');
+            
+            // Move to next step
+            currentStep++;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            progressSteps[currentStep-1].classList.add('active');
+            
+            // Update progress bar
+            progressBar.style.width = `${(currentStep-1) * 25}%`;
+          }
+        });
+      });
+      
+      prevButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          if (currentStep > 1) {
+            // Hide current step
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            
+            // Update progress
+            progressSteps[currentStep-1].classList.remove('active');
+            
+            // Move to previous step
+            currentStep--;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            progressSteps[currentStep-1].classList.remove('completed');
+            progressSteps[currentStep-1].classList.add('active');
+            
+            // Update progress bar
+            progressBar.style.width = `${(currentStep-1) * 25}%`;
+          }
+        });
+      });
+      
+      // Care options selection
+      const careOptions = document.querySelectorAll('.care-option');
+      
+      careOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          option.classList.toggle('selected');
+        });
+      });
+      
+      // Remove family member
+      const removeButtons = document.querySelectorAll('.remove-member');
+      
+      removeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          button.parentElement.remove();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
