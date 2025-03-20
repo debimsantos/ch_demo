@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareHive Interview UI Wireframes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #FFA726;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .wireframe-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .wireframe {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .wireframe h3 {
+            text-align: center;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .wireframe-content {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 350px;
+        }
+        .button {
+            background-color: #FFA726;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-align: center;
+            margin: 5px;
+            display: inline-block;
+        }
+        .input-field {
+            border: 1px solid #ccc;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 4px;
+            width: 90%;
+        }
+        .dropdown {
+            border: 1px solid #ccc;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 4px;
+            width: 95%;
+        }
+        .calendar {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-day {
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #eee;
+        }
+        .available {
+            background-color: #E8F5E9;
+        }
+        .unavailable {
+            background-color: #FFEBEE;
+        }
+        .time-slot {
+            border: 1px solid #ddd;
+            padding: 5px;
+            margin: 5px 0;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .credit-package {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .credit-package:hover {
+            background-color: #FFF3E0;
+        }
+        .selected {
+            background-color: #FFF3E0;
+            border: 1px solid #FFA726;
+        }
+        .interview-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .tag-button {
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        .tag-reject {
+            background-color: #FFEBEE;
+            color: #C62828;
+        }
+        .tag-shortlist {
+            background-color: #E3F2FD;
+            color: #1565C0;
+        }
+        .tag-hire {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+        .rating {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        .star {
+            width: 20px;
+            height: 20px;
+            background-color: #FFB300;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CareHive Interview UI Wireframes</h1>
+        <p>Visual representation of the interview workflow</p>
+    </div>
+
+    <div class="wireframe-container">
+        <!-- Credit Purchase Screen -->
+        <div class="wireframe">
+            <h3>1. Credit Purchase</h3>
+            <div class="wireframe-content">
+                <h4>Purchase Interview Credits</h4>
+                <p>Select a credit package to start interviewing care providers.</p>
+                
+                <div class="credit-package selected">
+                    <h4>Basic Package</h4>
+                    <p>1-5 Interviews</p>
+                    <p>₱250 (₱50 per interview)</p>
+                </div>
+                
+                <div class="credit-package">
+                    <h4>Standard Package</h4>
+                    <p>6-10 Interviews</p>
+                    <p>₱200 (₱33.33 per interview)</p>
+                </div>
+                
+                <div class="credit-package">
+                    <h4>Custom</h4>
+                    <p>10+ Interviews</p>
+                    <p>₱50 per additional interview</p>
+                </div>
+                
+                <div class="button">Proceed to Payment</div>
+            </div>
+        </div>
+
+        <!-- Provider Search Screen -->
+        <div class="wireframe">
+            <h3>2. Provider Search</h3>
+            <div class="wireframe-content">
+                <div class="input-field">🔍 Search care providers...</div>
+                
+                <p><strong>Filter by:</strong></p>
+                <select class="dropdown">
+                    <option>Service Type</option>
+                    <option>Child Care</option>
+                    <option>Senior Care</option>
+                    <option>Housekeeping</option>
+                    <option>Tutoring</option>
+                    <option>Pet Sitting</option>
+                </select>
+                
+                <select class="dropdown">
+                    <option>Availability</option>
+                    <option>Weekdays</option>
+                    <option>Weekends</option>
+                    <option>Morning</option>
+                    <option>Afternoon</option>
+                    <option>Evening</option>
+                </select>
+                
+                <select class="dropdown">
+                    <option>Rating</option>
+                    <option>5 Stars</option>
+                    <option>4+ Stars</option>
+                    <option>3+ Stars</option>
+                </select>
+                
+                <div class="interview-card">
+                    <div class="profile-pic"></div>
+                    <div style="display: inline-block; margin-left: 10px;">
+                        <strong>Maria Santos</strong>
+                        <div class="rating">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                    </div>
+                    <p>Child Care • 5 years experience</p>
+                    <div class="button">View Profile</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interview Scheduling -->
+        <div class="wireframe">
+            <h3>3. Interview Scheduling</h3>
+            <div class="wireframe-content">
+                <h4>Schedule Interview with Maria Santos</h4>
+                <p>Your Credits: 4</p>
+                
+                <p><strong>Select Date:</strong></p>
+                <div class="calendar">
+                    <div class="calendar-day">Su</div>
+                    <div class="calendar-day">Mo</div>
+                    <div class="calendar-day">Tu</div>
+                    <div class="calendar-day">We</div>
+                    <div class="calendar-day">Th</div>
+                    <div class="calendar-day">Fr</div>
+                    <div class="calendar-day">Sa</div>
+                    
+                    <div class="calendar-day unavailable">1</div>
+                    <div class="calendar-day unavailable">2</div>
+                    <div class="calendar-day available">3</div>
+                    <div class="calendar-day available">4</div>
+                    <div class="calendar-day available">5</div>
+                    <div class="calendar-day unavailable">6</div>
+                    <div class="calendar-day unavailable">7</div>
+                </div>
+                
+                <p><strong>Select Time:</strong></p>
+                <div class="time-slot selected">9:00 AM - 9:30 AM</div>
+                <div class="time-slot">10:00 AM - 10:30 AM</div>
+                <div class="time-slot">2:00 PM - 2:30 PM</div>
+                <div class="time-slot">4:00 PM - 4:30 PM</div>
+                
+                <div class="button">Send Interview Request</div>
+            </div>
+        </div>
+
+        <!-- Interview Confirmation -->
+        <div class="wireframe">
+            <h3>4. Interview Confirmation</h3>
+            <div class="wireframe-content">
+                <div style="text-align: center;">
+                    <div style="font-size: 48px; color: #4CAF50;">✓</div>
+                    <h4>Interview Request Sent!</h4>
+                </div>
+                
+                <div class="interview-card">
+                    <strong>Interview with Maria Santos</strong>
+                    <p>Date: March 20, 2025</p>
+                    <p>Time: 9:00 AM - 9:30 AM</p>
+                    <p>Service: Child Care</p>
+                </div>
+                
+                <p><small>Waiting for Maria to respond to your request...</small></p>
+                <p><small>You will be notified once she accepts or proposes a new time.</small></p>
+                
+                <div class="button">View All Pending Interviews</div>
+                <div class="button">Back to Search</div>
+            </div>
+        </div>
+
+        <!-- Video Interview Screen -->
+        <div class="wireframe">
+            <h3>5. Video Interview</h3>
+            <div class="wireframe-content">
+                <div style="height: 180px; background-color: #ddd; display: flex; justify-content: center; align-items: center;">
+                    <p>Care Provider Video</p>
+                </div>
+                
+                <div style="height: 80px; background-color: #eee; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+                    <p>You</p>
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
+                    <div style="width: 40px; height: 40px; background-color: #eee; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                        🎤
+                    </div>
+                    <div style="width: 40px; height: 40px; background-color: #eee; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                        📹
+                    </div>
+                    <div style="width: 40px; height: 40px; background-color: #eee; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                        🔊
+                    </div>
+                    <div style="width: 40px; height: 40px; background-color: #eee; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                        📝
+                    </div>
+                </div>
+                
+                <div style="margin-top: 15px; text-align: center;">
+                    <div class="button" style="background-color: #F44336;">End Interview</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post-Interview Tagging -->
+        <div class="wireframe">
+            <h3>6. Post-Interview Tagging</h3>
+            <div class="wireframe-content">
+                <h4>Interview Completed!</h4>
+                <p>How would you like to proceed with Maria Santos?</p>
+                
+                <div class="interview-card">
+                    <div class="profile-pic"></div>
+                    <div style="display: inline-block; margin-left: 10px;">
+                        <strong>Maria Santos</strong>
+                        <p>Child Care • 5 years experience</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                    <div class="tag-button tag-reject">Reject</div>
+                    <div class="tag-button tag-shortlist">Shortlist</div>
+                    <div class="tag-button tag-hire">Hire</div>
+                </div>
+                
+                <p><strong>Your Feedback:</strong></p>
+                <textarea class="input-field" style="height: 80px; width: 90%;" placeholder="Share your experience with this care provider..."></textarea>
+                
+                <div class="button">Submit</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
