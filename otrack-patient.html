@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTrack - Add New Patient</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="otrack-patient-styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="material-icons">medical_services</i>
+                OTrack
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link active">Patients</a>
+                <a href="#" class="nav-link">Assessments</a>
+                <a href="#" class="nav-link">Reports</a>
+            </div>
+            <div class="user-info">
+                <span class="text-muted">Sarah Johnson</span>
+                <div class="user-avatar">SJ</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <div>
+                    <button class="back-button">
+                        <i class="material-icons">arrow_back</i>
+                        Back to Patients
+                    </button>
+                    <h1 class="page-title">
+                        <i class="material-icons">person_add</i>
+                        Add New Patient
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Success Alert (Hidden by default) -->
+            <div id="successAlert" class="alert alert-success">
+                <div>
+                    <div class="alert-title">Patient Added Successfully</div>
+                    <p>The patient has been added to the system and is ready for assessment.</p>
+                </div>
+            </div>
+
+            <!-- Patient Form -->
+            <form id="patientForm">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Patient Information</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName" class="form-label">Full Name<span class="required-mark">*</span></label>
+                                <input type="text" id="fullName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob" class="form-label">Date of Birth<span class="required-mark">*</span></label>
+                                <input type="date" id="dob" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender" class="form-label">Gender<span class="required-mark">*</span></label>
+                                <select id="gender" class="form-control" required>
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mrn" class="form-label">Medical Record Number (MRN)<span class="required-mark">*</span></label>
+                                <input type="text" id="mrn" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="address" class="form-label">Address</label>
+                                <textarea id="address" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Referral Information</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="referrerName" class="form-label">Referrer Name</label>
+                                <input type="text" id="referrerName" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="referrerRole" class="form-label">Referrer Role</label>
+                                <input type="text" id="referrerRole" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="referrerContact" class="form-label">Referrer Contact</label>
+                                <input type="text" id="referrerContact" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="assignTherapist" class="form-label">Assign to Therapist</label>
+                                <select id="assignTherapist" class="form-control">
+                                    <option value="self">Myself (Dr. Sarah Johnson)</option>
+                                    <option value="team">Care Team</option>
+                                    <option value="other">Other Therapist</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="notes" class="form-label">Clinical Notes</label>
+                                <textarea id="notes" class="form-control" rows="5" placeholder="Relevant diagnosis, cognitive status, etc."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <button type="button" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="material-icons">save</i>
+                            Save Patient
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Next Steps (Shown after successful save) -->
+            <div id="nextSteps" style="display: none;">
+                <h2 style="margin-top: 32px; margin-bottom: 16px;">Next Steps</h2>
+                <div class="post-save-actions">
+                    <a href="#" class="action-card">
+                        <i class="material-icons" style="font-size: 32px; margin-bottom: 12px; color: var(--primary);">assessment</i>
+                        <div class="action-card-title">Create New Assessment</div>
+                        <div class="action-card-description">Begin an assessment for this patient</div>
+                    </a>
+                    <a href="#" class="action-card">
+                        <i class="material-icons" style="font-size: 32px; margin-bottom: 12px; color: var(--primary);">history</i>
+                        <div class="action-card-title">View Patient History</div>
+                        <div class="action-card-description">See previous assessments and progress</div>
+                    </a>
+                    <a href="#" class="action-card">
+                        <i class="material-icons" style="font-size: 32px; margin-bottom: 12px; color: var(--primary);">upload_file</i>
+                        <div class="action-card-title">Upload Documents</div>
+                        <div class="action-card-description">Add referral or assessment documents</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Duplicate Patient Modal -->
+    <div id="duplicateModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="material-icons">error_outline</i>
+                    Possible Duplicate Found
+                </h3>
+                <button class="modal-close">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <div>
+                        <div class="alert-title">Potential Duplicate Patient</div>
+                        <p>A patient with similar details already exists in the system.</p>
+                    </div>
+                </div>
+                <div style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; margin-top: 16px;">
+                    <h4 style="font-size: 16px; margin-bottom: 12px;">Existing Patient Details:</h4>
+                    <p><strong>Name:</strong> Jane Smith</p>
+                    <p><strong>DOB:</strong> 04/15/1985</p>
+                    <p><strong>MRN:</strong> 12345678</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="viewExistingPatient">View Existing Patient</button>
+                <button class="btn btn-secondary" id="cancelSave">Cancel</button>
+                <button class="btn btn-primary" id="confirmSave">Continue with Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.getElementById('patientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate random chance of duplicate (would be replaced with actual API check)
+            const randomChance = Math.random();
+            if (randomChance > 0.7) {
+                document.getElementById('duplicateModal').style.display = 'flex';
+            } else {
+                showSuccessState();
+            }
+        });
+        
+        // Close duplicate modal when clicking cancel
+        document.getElementById('cancelSave').addEventListener('click', function() {
+            document.getElementById('duplicateModal').style.display = 'none';
+        });
+        
+        // Confirm save despite duplicate
+        document.getElementById('confirmSave').addEventListener('click', function() {
+            document.getElementById('duplicateModal').style.display = 'none';
+            showSuccessState();
+        });
+        
+        // Close button on modal
+        document.querySelector('.modal-close').addEventListener('click', function() {
+            document.getElementById('duplicateModal').style.display = 'none';
+        });
+        
+        // Show success state
+        function showSuccessState() {
+            document.getElementById('successAlert').style.display = 'flex';
+            document.getElementById('nextSteps').style.display = 'block';
+            
+            // Scroll to success message
+            document.getElementById('successAlert').scrollIntoView({ behavior: 'smooth' });
+            
+            // Hide form (optional)
+            // document.getElementById('patientForm').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
