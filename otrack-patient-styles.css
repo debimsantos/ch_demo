@@ -123,7 +123,9 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #eaeaea;
+  background-color: var(--primary-light);
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   font-size: 14px;
 }
 
