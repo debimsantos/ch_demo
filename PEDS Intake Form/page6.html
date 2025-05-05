@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT/Sensory Intake - Specialists & Medical History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .checkbox-cell {
+            text-align: center;
+        }
+        .specialist-row td input {
+            width: 100%;
+        }
+        .history-entry {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .history-entry input {
+            flex: 1;
+        }
+        .diagnoses-table {
+            margin-top: 20px;
+        }
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn.prev {
+            background-color: #f44336;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .progress-bar {
+            background-color: #f1f1f1;
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 75%; /* 6/8 pages */
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress">6/8</div>
+    </div>
+    <h1>OCCUPATIONAL THERAPY / SENSORY<br>Intake Questionnaire</h1>
+    
+    <form id="otSensoryForm">
+        <h2>Specialists: (check all that apply)</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Specialist</th>
+                    <th>Check</th>
+                    <th>Name of Specialist(s)</th>
+                    <th>Phone Number</th>
+                    <th>Date(s) of Service</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="specialist-row">
+                    <td>Neurologist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_neurologist"></td>
+                    <td><input type="text" name="name_neurologist"></td>
+                    <td><input type="tel" name="phone_neurologist"></td>
+                    <td><input type="text" name="dates_neurologist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Psychologist/psychiatrist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_psychologist"></td>
+                    <td><input type="text" name="name_psychologist"></td>
+                    <td><input type="tel" name="phone_psychologist"></td>
+                    <td><input type="text" name="dates_psychologist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Orthopedist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_orthopedist"></td>
+                    <td><input type="text" name="name_orthopedist"></td>
+                    <td><input type="tel" name="phone_orthopedist"></td>
+                    <td><input type="text" name="dates_orthopedist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>ENT (Ear, Nose, and Throat)</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_ent"></td>
+                    <td><input type="text" name="name_ent"></td>
+                    <td><input type="tel" name="phone_ent"></td>
+                    <td><input type="text" name="dates_ent"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Allergist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_allergist"></td>
+                    <td><input type="text" name="name_allergist"></td>
+                    <td><input type="tel" name="phone_allergist"></td>
+                    <td><input type="text" name="dates_allergist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Optometrist/ophthalmologist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_optometrist"></td>
+                    <td><input type="text" name="name_optometrist"></td>
+                    <td><input type="tel" name="phone_optometrist"></td>
+                    <td><input type="text" name="dates_optometrist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Gastroenterologist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_gastroenterologist"></td>
+                    <td><input type="text" name="name_gastroenterologist"></td>
+                    <td><input type="tel" name="phone_gastroenterologist"></td>
+                    <td><input type="text" name="dates_gastroenterologist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Cardiologist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_cardiologist"></td>
+                    <td><input type="text" name="name_cardiologist"></td>
+                    <td><input type="tel" name="phone_cardiologist"></td>
+                    <td><input type="text" name="dates_cardiologist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Nutritionist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_nutritionist"></td>
+                    <td><input type="text" name="name_nutritionist"></td>
+                    <td><input type="tel" name="phone_nutritionist"></td>
+                    <td><input type="text" name="dates_nutritionist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Endocrinologist</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_endocrinologist"></td>
+                    <td><input type="text" name="name_endocrinologist"></td>
+                    <td><input type="tel" name="phone_endocrinologist"></td>
+                    <td><input type="text" name="dates_endocrinologist"></td>
+                </tr>
+                <tr class="specialist-row">
+                    <td>Other:</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="specialist_other"></td>
+                    <td><input type="text" name="name_other" placeholder="Name & Specialty"></td>
+                    <td><input type="tel" name="phone_other"></td>
+                    <td><input type="text" name="dates_other"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>History of Surgeries, Major Injuries, Illnesses, and Hospitalizations:</h2>
+        
+        <div id="medical_history">
+            <div class="history-entry">
+                <input type="text" name="medical_history[]" placeholder="Date/Reason">
+            </div>
+            <div class="history-entry">
+                <input type="text" name="medical_history[]" placeholder="Date/Reason">
+            </div>
+            <div class="history-entry">
+                <input type="text" name="medical_history[]" placeholder="Date/Reason">
+            </div>
+            <div class="history-entry">
+                <input type="text" name="medical_history[]" placeholder="Date/Reason">
+            </div>
+            <div class="history-entry">
+                <input type="text" name="medical_history[]" placeholder="Date/Reason">
+            </div>
+        </div>
+        
+        <h2>Has your child ever been tested for or received a diagnosis of (check all that apply):</h2>
+        
+        <table class="diagnoses-table">
+            <thead>
+                <tr>
+                    <th>Diagnosis</th>
+                    <th>Check</th>
+                    <th>Explain</th>
+                    <th>Onset Date</th>
+                    <th>Test Date</th>
+                    <th>Results</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Autism</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_autism"></td>
+                    <td><input type="text" name="explain_autism"></td>
+                    <td><input type="date" name="onset_autism"></td>
+                    <td><input type="date" name="test_autism"></td>
+                    <td><input type="text" name="results_autism"></td>
+                </tr>
+                <tr>
+                    <td>Asperger's</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_aspergers"></td>
+                    <td><input type="text" name="explain_aspergers"></td>
+                    <td><input type="date" name="onset_aspergers"></td>
+                    <td><input type="date" name="test_aspergers"></td>
+                    <td><input type="text" name="results_aspergers"></td>
+                </tr>
+                <tr>
+                    <td>PDD-NOS</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_pdd"></td>
+                    <td><input type="text" name="explain_pdd"></td>
+                    <td><input type="date" name="onset_pdd"></td>
+                    <td><input type="date" name="test_pdd"></td>
+                    <td><input type="text" name="results_pdd"></td>
+                </tr>
+                <tr>
+                    <td>Nonverbal Learning Disorder</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_nld"></td>
+                    <td><input type="text" name="explain_nld"></td>
+                    <td><input type="date" name="onset_nld"></td>
+                    <td><input type="date" name="test_nld"></td>
+                    <td><input type="text" name="results_nld"></td>
+                </tr>
+                <tr>
+                    <td>ADHD/ADD</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_adhd"></td>
+                    <td><input type="text" name="explain_adhd"></td>
+                    <td><input type="date" name="onset_adhd"></td>
+                    <td><input type="date" name="test_adhd"></td>
+                    <td><input type="text" name="results_adhd"></td>
+                </tr>
+                <tr>
+                    <td>Seizure Disorder</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_seizure"></td>
+                    <td><input type="text" name="explain_seizure"></td>
+                    <td><input type="date" name="onset_seizure"></td>
+                    <td><input type="date" name="test_seizure"></td>
+                    <td><input type="text" name="results_seizure"></td>
+                </tr>
+                <tr>
+                    <td>Sensory Processing Disorder</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_spd"></td>
+                    <td><input type="text" name="explain_spd"></td>
+                    <td><input type="date" name="onset_spd"></td>
+                    <td><input type="date" name="test_spd"></td>
+                    <td><input type="text" name="results_spd"></td>
+                </tr>
+                <tr>
+                    <td>Behavioral/Psychological</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_behavioral"></td>
+                    <td><input type="text" name="explain_behavioral"></td>
+                    <td><input type="date" name="onset_behavioral"></td>
+                    <td><input type="date" name="test_behavioral"></td>
+                    <td><input type="text" name="results_behavioral"></td>
+                </tr>
+                <tr>
+                    <td>Other</td>
+                    <td class="checkbox-cell"><input type="checkbox" name="diagnosis_other"></td>
+                    <td><input type="text" name="explain_other" placeholder="Specify and explain"></td>
+                    <td><input type="date" name="onset_other"></td>
+                    <td><input type="date" name="test_other"></td>
+                    <td><input type="text" name="results_other"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="navigation">
+            <button type="button" class="btn prev" onclick="window.location.href='page5.html'">Previous</button>
+            <button type="button" class="btn" onclick="window.location.href='page7.html'">Next</button>
+        </div>
+    </form>
+</body>
+</html>

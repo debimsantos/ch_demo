@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT/Sensory Intake - Health & Birth History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .apgar-scores {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        .apgar-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .apgar-item input {
+            width: 60px;
+        }
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn.prev {
+            background-color: #f44336;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .progress-bar {
+            background-color: #f1f1f1;
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 50%; /* 4/8 pages */
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress">4/8</div>
+    </div>
+    <h1>OCCUPATIONAL THERAPY / SENSORY<br>Intake Questionnaire</h1>
+    
+    <form id="otSensoryForm">
+        <h2>Health Care Providers</h2>
+        
+        <div class="form-group">
+            <label for="primary_physician">Primary Care Physician:</label>
+            <input type="text" id="primary_physician" name="primary_physician" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="clinic_name">Clinic Name:</label>
+            <input type="text" id="clinic_name" name="clinic_name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="clinic_phone">Clinic Phone Number:</label>
+            <input type="tel" id="clinic_phone" name="clinic_phone" required>
+        </div>
+        
+        <h2>Birth History:</h2>
+        
+        <div class="form-group">
+            <label>Term:</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" id="full_term" name="term" value="full_term" required>
+                    <label for="full_term">Full Term</label>
+                </div>
+                <div class="radio-item" style="display: flex; align-items: center;">
+                    <input type="radio" id="premature" name="term" value="premature">
+                    <label for="premature">Prematurity at</label>
+                    <input type="number" id="premature_weeks" name="premature_weeks" placeholder="weeks" style="width: 80px; margin: 0 5px;">
+                    <label>weeks gestation</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Birth:</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="single" name="birth_type[]" value="single">
+                    <label for="single">Single</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="twin" name="birth_type[]" value="twin">
+                    <label for="twin">Twin</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="triplet" name="birth_type[]" value="triplet">
+                    <label for="triplet">Triplet</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="other_birth" name="birth_type[]" value="other">
+                    <label for="other_birth">Other:</label>
+                    <input type="text" id="other_birth_text" name="other_birth_text" style="width: 100px;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="birth_weight">Birth Weight:</label>
+            <input type="text" id="birth_weight" name="birth_weight">
+        </div>
+        
+        <div class="form-group">
+            <label for="birth_length">Birth Length:</label>
+            <input type="text" id="birth_length" name="birth_length">
+        </div>
+        
+        <div class="form-group">
+            <label>APGAR Scores:</label>
+            <div class="apgar-scores">
+                <div class="apgar-item">
+                    <label for="apgar_1min">1 min:</label>
+                    <input type="number" id="apgar_1min" name="apgar_1min" min="0" max="10">
+                </div>
+                <div class="apgar-item">
+                    <label for="apgar_5min">5 min:</label>
+                    <input type="number" id="apgar_5min" name="apgar_5min" min="0" max="10">
+                </div>
+                <div class="apgar-item">
+                    <label for="apgar_10min">10 min:</label>
+                    <input type="number" id="apgar_10min" name="apgar_10min" min="0" max="10">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Maternal Health During Pregnancy: (check all that apply)</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="no_complications" name="maternal_health[]" value="no_complications">
+                    <label for="no_complications">No medical complications</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="gestational_diabetes" name="maternal_health[]" value="gestational_diabetes">
+                    <label for="gestational_diabetes">Gestational diabetes</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="hypertension" name="maternal_health[]" value="hypertension">
+                    <label for="hypertension">Hypertension</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="bed_rest" name="maternal_health[]" value="bed_rest">
+                    <label for="bed_rest">Bed rest</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="drug_alcohol" name="maternal_health[]" value="drug_alcohol">
+                    <label for="drug_alcohol">Drug/alcohol exposure</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="maternal_medications" name="maternal_health[]" value="medications">
+                    <label for="maternal_medications">Medications:</label>
+                    <input type="text" id="maternal_medications_text" name="maternal_medications_text" style="width: 150px;">
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="maternal_other" name="maternal_health[]" value="other">
+                    <label for="maternal_other">Other:</label>
+                    <input type="text" id="maternal_other_text" name="maternal_other_text" style="width: 150px;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Labor: (check all that apply)</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="spontaneous" name="labor[]" value="spontaneous">
+                    <label for="spontaneous">Spontaneous without complications</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="induced" name="labor[]" value="induced">
+                    <label for="induced">Induced</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="c_section" name="labor[]" value="c_section">
+                    <label for="c_section">C-section</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="forceps" name="labor[]" value="forceps">
+                    <label for="forceps">Forceps and/or suction used</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="labor_other" name="labor[]" value="other">
+                    <label for="labor_other">Other:</label>
+                    <input type="text" id="labor_other_text" name="labor_other_text" style="width: 150px;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Health of Infant at Birth: (check all that apply)</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="no_issues" name="infant_health[]" value="no_issues">
+                    <label for="no_issues">No issues</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="breathing_difficulty" name="infant_health[]" value="breathing_difficulty">
+                    <label for="breathing_difficulty">Breathing difficulty</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="jaundice" name="infant_health[]" value="jaundice">
+                    <label for="jaundice">Jaundice</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="brain_bleed" name="infant_health[]" value="brain_bleed">
+                    <label for="brain_bleed">Brain bleed</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="cardiac_issues" name="infant_health[]" value="cardiac_issues">
+                    <label for="cardiac_issues">Cardiac issues</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="seizures" name="infant_health[]" value="seizures">
+                    <label for="seizures">Seizures</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="gastroschisis" name="infant_health[]" value="gastroschisis">
+                    <label for="gastroschisis">Gastroschisis</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="nas" name="infant_health[]" value="nas">
+                    <label for="nas">NAS-neonatal abstinence syndrome</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="polyhydramnios" name="infant_health[]" value="polyhydramnios">
+                    <label for="polyhydramnios">Polyhydramnios</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="infant_other" name="infant_health[]" value="other">
+                    <label for="infant_other">Other:</label>
+                    <input type="text" id="infant_other_text" name="infant_other_text" style="width: 150px;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Health During Infancy: (check all that apply)</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="relatively_healthy" name="infancy_health[]" value="relatively_healthy">
+                    <label for="relatively_healthy">Relatively healthy</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="respiratory_infections" name="infancy_health[]" value="respiratory_infections">
+                    <label for="respiratory_infections">Respiratory infections</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="reflux" name="infancy_health[]" value="reflux">
+                    <label for="reflux">Reflux</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ear_infections" name="infancy_health[]" value="ear_infections">
+                    <label for="ear_infections">Recurrent ear infections</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="feeding_difficulties" name="infancy_health[]" value="feeding_difficulties">
+                    <label for="feeding_difficulties">Feeding difficulties</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="inconsolable" name="infancy_health[]" value="inconsolable">
+                    <label for="inconsolable">Inconsolable, frequent crying</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="hernia" name="infancy_health[]" value="hernia">
+                    <label for="hernia">Hernia</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="infancy_other" name="infancy_health[]" value="other">
+                    <label for="infancy_other">Other:</label>
+                    <input type="text" id="infancy_other_text" name="infancy_other_text" style="width: 150px;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button type="button" class="btn prev" onclick="window.location.href='page3.html'">Previous</button>
+            <button type="button" class="btn" onclick="window.location.href='page5.html'">Next</button>
+        </div>
+    </form>
+</body>
+</html>

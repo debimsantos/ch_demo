@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT/Sensory Intake - Personal Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .name-fields {
+            display: flex;
+            gap: 10px;
+        }
+        .name-fields input {
+            flex: 1;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        .address-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .address-fields input, .address-fields .city {
+            flex: 1;
+        }
+        .state-zip {
+            display: flex;
+            gap: 10px;
+        }
+        .state-zip .state {
+            width: 100px;
+        }
+        .navigation {
+            margin-top: 30px;
+            text-align: right;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .pain-scale {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .pain-scale h3 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+        .emoji-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 15px 0;
+        }
+        .emoji-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: calc(100% / 6);
+        }
+        .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        .scale-line {
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #4CAF50, #FFEB3B, #FFC107, #FF9800, #F44336);
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .scale-numbers {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .progress-bar {
+            background-color: #f1f1f1;
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 12.5%; /* 1/8 pages */
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+        .pain-radio-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .pain-radio-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(100% / 11);
+            text-align: center;
+        }
+        .pain-radio-item input {
+            margin: 0;
+        }
+        .pain-radio-item label {
+            font-size: 0.8rem;
+            margin-top: 3px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress">1/8</div>
+    </div>
+    <h1>OCCUPATIONAL THERAPY / SENSORY<br>Intake Questionnaire</h1>
+    
+    <form id="otSensoryForm">
+        <div class="form-group">
+            <label for="person_completing">Person Completing Questionnaire:</label>
+            <input type="text" id="person_completing" name="person_completing" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="relationship">Relationship to Child:</label>
+            <input type="text" id="relationship" name="relationship" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="child_name">Child's Name:</label>
+            <div class="name-fields">
+                <input type="text" id="first_name" name="first_name" placeholder="First" required>
+                <input type="text" id="middle_initial" name="middle_initial" placeholder="MI">
+                <input type="text" id="last_name" name="last_name" placeholder="Last" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Gender:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="male" required> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <div class="address-fields">
+                <input type="text" id="street" name="street" placeholder="Street" required>
+                <input type="text" id="apt" name="apt" placeholder="Apt">
+            </div>
+            <div class="address-fields" style="margin-top: 10px;">
+                <input type="text" id="city" name="city" placeholder="City" required>
+                <div class="state-zip">
+                    <input type="text" id="state" name="state" placeholder="State" required class="state">
+                    <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="diagnosis">Diagnosis:</label>
+            <input type="text" id="diagnosis" name="diagnosis">
+        </div>
+        
+        <div class="form-group">
+            <label for="allergies">Allergies (Drug and food):</label>
+            <textarea id="allergies" name="allergies" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="medications">Medications (Prescription and non-prescription):</label>
+            <textarea id="medications" name="medications" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="referring_provider">Referring Provider:</label>
+            <input type="text" id="referring_provider" name="referring_provider">
+        </div>
+
+        <div class="pain-scale">
+            <h3>Pain Assessment Scale</h3>
+            <div class="emoji-scale">
+                <div class="emoji-item">
+                    <div class="emoji">😀</div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">🙂</div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">😐</div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">😕</div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">😣</div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">😭</div>
+                </div>
+            </div>
+            <div class="scale-line"></div>
+            <div class="pain-radio-group">
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="0" id="pain0">
+                    <label for="pain0">0</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="1" id="pain1">
+                    <label for="pain1">1</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="2" id="pain2">
+                    <label for="pain2">2</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="3" id="pain3">
+                    <label for="pain3">3</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="4" id="pain4">
+                    <label for="pain4">4</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="5" id="pain5">
+                    <label for="pain5">5</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="6" id="pain6">
+                    <label for="pain6">6</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="7" id="pain7">
+                    <label for="pain7">7</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="8" id="pain8">
+                    <label for="pain8">8</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="9" id="pain9">
+                    <label for="pain9">9</label>
+                </div>
+                <div class="pain-radio-item">
+                    <input type="radio" name="pain_level" value="10" id="pain10">
+                    <label for="pain10">10</label>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <div>No Pain</div>
+                <div>Worst Possible Pain</div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button type="button" class="btn" onclick="window.location.href='page2.html'">Next</button>
+        </div>
+    </form>
+</body>
+</html>

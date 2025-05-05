@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT/Sensory Intake - Therapy History & Development</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .milestones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .milestone {
+            display: flex;
+            flex-direction: column;
+            width: calc(33.33% - 10px);
+        }
+        .milestone label {
+            margin-bottom: 5px;
+        }
+        .milestone input {
+            width: 100%;
+        }
+        .yes-no-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .yes-no-table, .yes-no-table th, .yes-no-table td {
+            border: 1px solid #ddd;
+        }
+        .yes-no-table th, .yes-no-table td {
+            padding: 10px;
+            text-align: left;
+        }
+        .yes-no-table th {
+            background-color: #f2f2f2;
+        }
+        .yes-no-radios {
+            display: flex;
+            gap: 20px;
+        }
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn.prev {
+            background-color: #f44336;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .progress-bar {
+            background-color: #f1f1f1;
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 87.5%; /* 7/8 pages */
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress">7/8</div>
+    </div>
+    <h1>OCCUPATIONAL THERAPY / SENSORY<br>Intake Questionnaire</h1>
+    
+    <form id="otSensoryForm">
+        <h2>Current and Previous Therapies: (OT/PT/SLP etc.)</h2>
+        
+        <div class="form-group">
+            <label for="ot_services">Has your child ever received Occupational Therapy services? (If yes, from whom, where, and dates of service).</label>
+            <textarea id="ot_services" name="ot_services" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="speech_services">Has your child ever received Speech Therapy services? (If yes, from whom, where, and dates of service).</label>
+            <textarea id="speech_services" name="speech_services" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="pt_services">Has your child ever received Physical Therapy services? (If yes, from whom, where, and dates of service).</label>
+            <textarea id="pt_services" name="pt_services" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="behavioral_services">Has your child ever received Psychology, Social Work, or Behavioral support services? (If yes, from whom, where, and dates of service).</label>
+            <textarea id="behavioral_services" name="behavioral_services" rows="3"></textarea>
+        </div>
+        
+        <h2>Motor Milestones: (please indicate AGE at which child reached milestone)</h2>
+        
+        <div class="milestones">
+            <div class="milestone">
+                <label for="rolled">Rolled:</label>
+                <input type="text" id="rolled" name="rolled">
+            </div>
+            
+            <div class="milestone">
+                <label for="sat">Sat:</label>
+                <input type="text" id="sat" name="sat">
+            </div>
+            
+            <div class="milestone">
+                <label for="crawled">Crawled:</label>
+                <input type="text" id="crawled" name="crawled">
+            </div>
+            
+            <div class="milestone">
+                <label for="stood">Stood:</label>
+                <input type="text" id="stood" name="stood">
+            </div>
+            
+            <div class="milestone">
+                <label for="walked">Walked:</label>
+                <input type="text" id="walked" name="walked">
+            </div>
+        </div>
+        
+        <h2>Fine Motor Skills: (please check yes or no for each statement)</h2>
+        
+        <table class="yes-no-table">
+            <tr>
+                <td>My child is able to reach for toys.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="reach_yes" name="reach_toys" value="yes" required>
+                            <label for="reach_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="reach_no" name="reach_toys" value="no">
+                            <label for="reach_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to bang toys together in play.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="bang_yes" name="bang_toys" value="yes" required>
+                            <label for="bang_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="bang_no" name="bang_toys" value="no">
+                            <label for="bang_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to pick up small items (i.e. Cheerios).</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="pickup_yes" name="pickup_small" value="yes" required>
+                            <label for="pickup_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="pickup_no" name="pickup_small" value="no">
+                            <label for="pickup_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to scribble.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="scribble_yes" name="scribble" value="yes" required>
+                            <label for="scribble_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="scribble_no" name="scribble" value="no">
+                            <label for="scribble_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to write his/her name.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="write_name_yes" name="write_name" value="yes" required>
+                            <label for="write_name_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="write_name_no" name="write_name" value="no">
+                            <label for="write_name_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to snip with scissors.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="scissors_yes" name="scissors" value="yes" required>
+                            <label for="scissors_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="scissors_no" name="scissors" value="no">
+                            <label for="scissors_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to draw a stick figure of a person.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="draw_person_yes" name="draw_person" value="yes" required>
+                            <label for="draw_person_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="draw_person_no" name="draw_person" value="no">
+                            <label for="draw_person_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        <h2>Self-Care Skills: (please check yes or no for each statement)</h2>
+        
+        <table class="yes-no-table">
+            <tr>
+                <td>My child is able to undress him/herself independently.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="undress_yes" name="undress" value="yes" required>
+                            <label for="undress_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="undress_no" name="undress" value="no">
+                            <label for="undress_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to dress him/herself independently.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="dress_yes" name="dress" value="yes" required>
+                            <label for="dress_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="dress_no" name="dress" value="no">
+                            <label for="dress_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to feed him/herself independently using a fork.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="feed_fork_yes" name="feed_fork" value="yes" required>
+                            <label for="feed_fork_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="feed_fork_no" name="feed_fork" value="no">
+                            <label for="feed_fork_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to drink from an open-cup or from a straw.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="drink_cup_yes" name="drink_cup" value="yes" required>
+                            <label for="drink_cup_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="drink_cup_no" name="drink_cup" value="no">
+                            <label for="drink_cup_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to bathe him/herself independently with only verbal reminders.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="bathe_yes" name="bathe" value="yes" required>
+                            <label for="bathe_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="bathe_no" name="bathe" value="no">
+                            <label for="bathe_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    My child is toilet trained.
+                    <div style="margin-top: 5px;">
+                        <label for="toilet_age">Age potty trained:</label>
+                        <input type="number" id="toilet_age" name="toilet_age" style="width: 60px;">
+                    </div>
+                </td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="toilet_yes" name="toilet" value="yes" required>
+                            <label for="toilet_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="toilet_no" name="toilet" value="no">
+                            <label for="toilet_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        <h2>Sleep: (please check yes or no for each statement)</h2>
+        
+        <table class="yes-no-table">
+            <tr>
+                <td>My child sleeps independently in his/her own bed/crib.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="sleep_independent_yes" name="sleep_independent" value="yes" required>
+                            <label for="sleep_independent_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="sleep_independent_no" name="sleep_independent" value="no">
+                            <label for="sleep_independent_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child is able to easily fall asleep at night and for naps.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="fall_asleep_yes" name="fall_asleep" value="yes" required>
+                            <label for="fall_asleep_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="fall_asleep_no" name="fall_asleep" value="no">
+                            <label for="fall_asleep_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    My child is able to sleep through the night without waking.
+                    <div style="margin-top: 5px;">
+                        <label for="wakes_times"># of times wakes:</label>
+                        <input type="number" id="wakes_times" name="wakes_times" style="width: 60px;">
+                    </div>
+                </td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="sleep_through_yes" name="sleep_through" value="yes" required>
+                            <label for="sleep_through_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="sleep_through_no" name="sleep_through" value="no">
+                            <label for="sleep_through_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child snores and/or has a history of sleep apnea.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="snores_yes" name="snores" value="yes" required>
+                            <label for="snores_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="snores_no" name="snores" value="no">
+                            <label for="snores_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        <h2>Feeding: (please check yes or no for each statement)</h2>
+        
+        <table class="yes-no-table">
+            <tr>
+                <td>My child consumes liquids via breast/bottle.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="breast_bottle_yes" name="breast_bottle" value="yes" required>
+                            <label for="breast_bottle_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="breast_bottle_no" name="breast_bottle" value="no">
+                            <label for="breast_bottle_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child receives nutrition via feeding tube.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="feeding_tube_yes" name="feeding_tube" value="yes" required>
+                            <label for="feeding_tube_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="feeding_tube_no" name="feeding_tube" value="no">
+                            <label for="feeding_tube_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child coughs/chokes/gags when eating.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="coughs_yes" name="coughs" value="yes" required>
+                            <label for="coughs_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="coughs_no" name="coughs" value="no">
+                            <label for="coughs_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child easily transitioned to solid foods.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="solids_yes" name="solids" value="yes" required>
+                            <label for="solids_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="solids_no" name="solids" value="no">
+                            <label for="solids_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child appears to chew his/her food thoroughly.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="chew_yes" name="chew" value="yes" required>
+                            <label for="chew_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="chew_no" name="chew" value="no">
+                            <label for="chew_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        <h2>Understanding Language:</h2>
+        
+        <div class="form-group">
+            <label>When you talk to your child, how much does he or she understand? Check one:</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="radio" id="understand_few" name="understanding" value="few_words" required>
+                    <label for="understand_few">A few words</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="understand_simple" name="understanding" value="simple_directions">
+                    <label for="understand_simple">Simple directions</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="understand_many" name="understanding" value="many_words">
+                    <label for="understand_many">Many words and phrases</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="understand_all" name="understanding" value="everything">
+                    <label for="understand_all">Almost everything I say</label>
+                </div>
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <label for="understanding_comments">Additional comments/examples:</label>
+                <textarea id="understanding_comments" name="understanding_comments" rows="2"></textarea>
+            </div>
+        </div>
+        
+        <h2>Communicating 1:</h2>
+        
+        <div class="form-group">
+            <label>How does your child let you know what he or she wants? Check ALL that apply:</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_cries" name="communication[]" value="cries">
+                    <label for="comm_cries">Cries</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_few_words" name="communication[]" value="few_words">
+                    <label for="comm_few_words">Uses a few words</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_points" name="communication[]" value="points">
+                    <label for="comm_points">Points to what he or she wants</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_many_words" name="communication[]" value="many_words">
+                    <label for="comm_many_words">Says many words, but only one at a time</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_gestures" name="communication[]" value="gestures">
+                    <label for="comm_gestures">Uses gestures</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_sentences" name="communication[]" value="sentences">
+                    <label for="comm_sentences">Says two or three word sentences</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_few_sounds" name="communication[]" value="few_sounds">
+                    <label for="comm_few_sounds">Makes a few sounds</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_long_sentences" name="communication[]" value="long_sentences">
+                    <label for="comm_long_sentences">Uses long sentences</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="comm_many_sounds" name="communication[]" value="many_sounds">
+                    <label for="comm_many_sounds">Makes many different sounds</label>
+                </div>
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <label for="communication_comments">Additional comments/examples:</label>
+                <textarea id="communication_comments" name="communication_comments" rows="2"></textarea>
+            </div>
+        </div>
+        
+        <h2>Communicating 2: (please check yes or no for each statement)</h2>
+        
+        <table class="yes-no-table">
+            <tr>
+                <td>My child answers when I talk to him or her.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="answers_yes" name="answers" value="yes" required>
+                            <label for="answers_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="answers_no" name="answers" value="no">
+                            <label for="answers_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>My child talks about what he or she is doing.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="talks_about_yes" name="talks_about" value="yes" required>
+                            <label for="talks_about_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="talks_about_no" name="talks_about" value="no">
+                            <label for="talks_about_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Family members can understand my child's speech.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="family_understand_yes" name="family_understand" value="yes" required>
+                            <label for="family_understand_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="family_understand_no" name="family_understand" value="no">
+                            <label for="family_understand_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>People outside of the family can understand my child's speech.</td>
+                <td>
+                    <div class="yes-no-radios">
+                        <div class="radio-item">
+                            <input type="radio" id="outside_understand_yes" name="outside_understand" value="yes" required>
+                            <label for="outside_understand_yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="outside_understand_no" name="outside_understand" value="no">
+                            <label for="outside_understand_no">No</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        <h2>School/Academic Information:</h2>
+        
+        <div class="form-group">
+            <label for="school">School currently attending:</label>
+            <input type="text" id="school" name="school">
+        </div>
+        
+        <div class="form-group">
+            <label for="grade">Grade:</label>
+            <input type="text" id="grade" name="grade">
+        </div>
+        
+        <div class="navigation">
+            <button type="button" class="btn prev" onclick="window.location.href='page6.html'">Previous</button>
+            <button type="button" class="btn" onclick="window.location.href='page8.html'">Next</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT/Sensory Intake - School & Daily Challenges</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 80px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .challenge-section {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .challenge-section h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn.prev {
+            background-color: #f44336;
+        }
+        .btn.submit {
+            background-color: #2196F3;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .progress-bar {
+            background-color: #f1f1f1;
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 100%; /* 8/8 pages */
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+        .information-needs {
+            margin-top: 30px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress">8/8</div>
+    </div>
+    <h1>OCCUPATIONAL THERAPY / SENSORY<br>Intake Questionnaire</h1>
+    
+    <form id="otSensoryForm">
+        <div class="form-group">
+            <label>Does your child currently receive any of the following services: (check all that apply)</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="special_education" name="school_services[]" value="special_education">
+                    <label for="special_education">Special Education</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="testing_accommodations" name="school_services[]" value="testing_accommodations">
+                    <label for="testing_accommodations">Special Testing Accommodations</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="resource_room" name="school_services[]" value="resource_room">
+                    <label for="resource_room">Resource Room</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="in_school_therapy" name="school_services[]" value="in_school_therapy">
+                    <label for="in_school_therapy">In school therapy (speech, occupational, or physical)</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Has your child been evaluated for school based therapy services:</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" id="school_eval_yes" name="school_eval" value="yes" required>
+                    <label for="school_eval_yes">Yes</label>
+                    <input type="text" id="school_eval_date" name="school_eval_date" placeholder="Date of evaluation(s):" style="width: 200px; margin-left: 5px;">
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="school_eval_no" name="school_eval" value="no">
+                    <label for="school_eval_no">No</label>
+                </div>
+            </div>
+            <p style="margin-top: 5px; font-weight: bold;">*IF YES, PLEASE BRING A COPY WITH YOU TO THE EVALUATION.</p>
+        </div>
+        
+        <div class="form-group">
+            <label>Does your child have an IEP/IFSP or 504 plan?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" id="iep_yes" name="iep" value="yes" required>
+                    <label for="iep_yes">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="iep_no" name="iep" value="no">
+                    <label for="iep_no">No</label>
+                </div>
+            </div>
+            <p style="margin-top: 5px; font-weight: bold;">*IF YES, PLEASE BRING A COPY WITH YOU TO THE EVALUATION.</p>
+        </div>
+        
+        <div class="form-group">
+            <label>Does your child enjoy school?</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" id="enjoy_school_yes" name="enjoy_school" value="yes" required>
+                    <label for="enjoy_school_yes">Yes</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="enjoy_school_no" name="enjoy_school" value="no">
+                    <label for="enjoy_school_no">No</label>
+                </div>
+            </div>
+            <textarea id="enjoy_school_explain" name="enjoy_school_explain" placeholder="Please explain:"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="school_challenges">What areas of school are challenging for your child? (social interactions, attention, academic, handwriting, certain classes or times of day, etc.)</label>
+            <textarea id="school_challenges" name="school_challenges"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="teacher_concerns">What, if any, concerns have the teacher(s) raised?</label>
+            <textarea id="teacher_concerns" name="teacher_concerns"></textarea>
+        </div>
+        
+        <h2>Daily Routine</h2>
+        
+        <p>Please use the table below to write down your child's "typical" daily routine for weekday and weekend days.</p>
+        <p>*Be as SPECIFIC as possible.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>WEEKDAY</th>
+                    <th>WEEKEND</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Activities | Primary Caregiver(s) | Setting</th>
+                    <th>Activities | Primary Caregiver(s) | Setting</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Early Morning</strong></td>
+                    <td><textarea name="weekday_early_morning" rows="2"></textarea></td>
+                    <td><textarea name="weekend_early_morning" rows="2"></textarea></td>
+                </tr>
+                <tr>
+                    <td><strong>Morning</strong></td>
+                    <td><textarea name="weekday_morning" rows="2"></textarea></td>
+                    <td><textarea name="weekend_morning" rows="2"></textarea></td>
+                </tr>
+                <tr>
+                    <td><strong>Midday</strong></td>
+                    <td><textarea name="weekday_midday" rows="2"></textarea></td>
+                    <td><textarea name="weekend_midday" rows="2"></textarea></td>
+                </tr>
+                <tr>
+                    <td><strong>Afternoon</strong></td>
+                    <td><textarea name="weekday_afternoon" rows="2"></textarea></td>
+                    <td><textarea name="weekend_afternoon" rows="2"></textarea></td>
+                </tr>
+                <tr>
+                    <td><strong>Evening</strong></td>
+                    <td><textarea name="weekday_evening" rows="2"></textarea></td>
+                    <td><textarea name="weekend_evening" rows="2"></textarea></td>
+                </tr>
+                <tr>
+                    <td><strong>Bedtime/Sleep routine</strong></td>
+                    <td><textarea name="weekday_bedtime" rows="2"></textarea></td>
+                    <td><textarea name="weekend_bedtime" rows="2"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Based upon the activities/situations/transitions/times of day, what 3 areas are the most challenging?</h2>
+        
+        <div class="form-group">
+            <label for="challenge_1">1.</label>
+            <input type="text" id="challenge_1" name="challenge_1" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="challenge_2">2.</label>
+            <input type="text" id="challenge_2" name="challenge_2" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="challenge_3">3.</label>
+            <input type="text" id="challenge_3" name="challenge_3" required>
+        </div>
+        
+        <h3>Please complete the following chart based upon the above identified 3 challenges.</h3>
+        
+        <div class="challenge-section">
+            <h3>CHALLENGE #1</h3>
+            
+            <div class="form-group">
+                <label for="challenge1_details">Please explain, in detail, what occurs during this challenge. (What happens before? During? After?)</label>
+                <textarea id="challenge1_details" name="challenge1_details" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge1_why">What makes this time/event challenging?</label>
+                <textarea id="challenge1_why" name="challenge1_why" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge1_ideal">What would this time/event IDEALLY look like?</label>
+                <textarea id="challenge1_ideal" name="challenge1_ideal" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge1_tools">What things would need to change for this event to occur IDEALLY? What tools/strategies do you need to help make this happen?</label>
+                <textarea id="challenge1_tools" name="challenge1_tools" required></textarea>
+            </div>
+        </div>
+        
+        <div class="challenge-section">
+            <h3>CHALLENGE #2</h3>
+            
+            <div class="form-group">
+                <label for="challenge2_details">Please explain, in detail, what occurs during this challenge. (What happens before? During? After?)</label>
+                <textarea id="challenge2_details" name="challenge2_details" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge2_why">What makes this time/event challenging?</label>
+                <textarea id="challenge2_why" name="challenge2_why" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge2_ideal">What would this time/event IDEALLY look like?</label>
+                <textarea id="challenge2_ideal" name="challenge2_ideal" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge2_tools">What things would need to change for this event to occur IDEALLY? What tools/strategies do you need to help make this happen?</label>
+                <textarea id="challenge2_tools" name="challenge2_tools" required></textarea>
+            </div>
+        </div>
+        
+        <div class="challenge-section">
+            <h3>CHALLENGE #3</h3>
+            
+            <div class="form-group">
+                <label for="challenge3_details">Please explain, in detail, what occurs during this challenge. (What happens before? During? After?)</label>
+                <textarea id="challenge3_details" name="challenge3_details" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge3_why">What makes this time/event challenging?</label>
+                <textarea id="challenge3_why" name="challenge3_why" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge3_ideal">What would this time/event IDEALLY look like?</label>
+                <textarea id="challenge3_ideal" name="challenge3_ideal" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="challenge3_tools">What things would need to change for this event to occur IDEALLY? What tools/strategies do you need to help make this happen?</label>
+                <textarea id="challenge3_tools" name="challenge3_tools" required></textarea>
+            </div>
+        </div>
+        
+        <div class="information-needs">
+            <h2>Information I need in order to help my child:</h2>
+            
+            <p>I would like to have more information about... Check ALL that apply:</p>
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_child_development" name="info_needs[]" value="child_development">
+                    <label for="info_child_development">Child development</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_family_support" name="info_needs[]" value="family_support">
+                    <label for="info_family_support">Family support groups</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_diagnoses" name="info_needs[]" value="diagnoses">
+                    <label for="info_diagnoses">Diagnoses and treatment</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_respite" name="info_needs[]" value="respite">
+                    <label for="info_respite">Respite care</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_laws" name="info_needs[]" value="laws">
+                    <label for="info_laws">Laws governing services for children</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_treatment" name="info_needs[]" value="treatment">
+                    <label for="info_treatment">Other treatment options</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_early_intervention" name="info_needs[]" value="early_intervention">
+                    <label for="info_early_intervention">Early intervention services (birth-3 years)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_special_education" name="info_needs[]" value="special_education">
+                    <label for="info_special_education">Special education services</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_financial" name="info_needs[]" value="financial">
+                    <label for="info_financial">Financial assistance (e.g. insurance, SSI, Medicaid)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="info_other" name="info_needs[]" value="other">
+                    <label for="info_other">Other:</label>
+                    <input type="text" id="info_other_text" name="info_other_text" style="width: 200px; margin-left: 5px;">
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 15px;">
+            <p>I acknowledge that I have received a copy of the <em>Welcome to Pediatric Therapy Services</em> orientation packet.</p>
+            
+            <div style="display: flex; margin-top: 20px; justify-content: space-between;">
+                <div style="flex: 2;">
+                    <label for="caregiver_signature">Caregiver Signature:</label>
+                    <input type="text" id="caregiver_signature" name="caregiver_signature" required>
+                </div>
+                <div style="flex: 1; margin-left: 20px;">
+                    <label for="signature_date">Date:</label>
+                    <input type="date" id="signature_date" name="signature_date" required style="width: 100%;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button type="button" class="btn prev" onclick="window.location.href='page7.html'">Previous</button>
+            <button type="submit" class="btn submit">Submit Form</button>
+        </div>
+    </form>
+    
+    <script>
+        // Basic form submission handling
+        document.getElementById('otSensoryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for completing the form! In a real implementation, this would be submitted to the server.');
+            // In a real implementation, you would send the form data to your server here
+        });
+    </script>
+</body>
+</html>

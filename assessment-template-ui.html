@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTrack Assessment Platform</title>
+  <style>
+    :root {
+      --primary: #4a6fff;
+      --primary-dark: #3255e6;
+      --secondary: #6c757d;
+      --success: #28a745;
+      --info: #17a2b8;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --white: #ffffff;
+      --gray-100: #f8f9fa;
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-400: #ced4da;
+      --gray-500: #adb5bd;
+      --gray-600: #6c757d;
+      --gray-700: #495057;
+      --gray-800: #343a40;
+      --gray-900: #212529;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--gray-800);
+      background-color: var(--gray-100);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    main {
+      padding: 2rem 0;
+    }
+    
+    .card {
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    
+    .card-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .card-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--gray-200);
+      background-color: var(--gray-50);
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .breadcrumbs {
+      display: flex;
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .breadcrumbs li:not(:last-child)::after {
+      content: '/';
+      margin: 0 0.5rem;
+      color: var(--gray-500);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    
+    .text-muted {
+      color: var(--gray-600);
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .badge-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .badge-warning {
+      background-color: var(--warning);
+      color: var(--gray-900);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.15s ease-in-out;
+    }
+    
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(74, 111, 255, 0.1);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--gray-400);
+      color: var(--gray-700);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--gray-200);
+    }
+
+    .btn-success {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+    
+    .progress {
+      height: 8px;
+      background-color: var(--gray-300);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background-color: var(--primary);
+      width: 30%;
+    }
+    
+    .tabs {
+      display: flex;
+      list-style: none;
+      border-bottom: 1px solid var(--gray-300);
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-item {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      font-weight: 500;
+    }
+    
+    .tab-item.active {
+      border-bottom-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    .assessment-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .assessment-option {
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .assessment-option:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    .assessment-option.selected {
+      border-color: var(--primary);
+      background-color: rgba(74, 111, 255, 0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    .assessment-option-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .form-check {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    
+    .form-check input {
+      margin-right: 0.5rem;
+    }
+    
+    .rating-scale {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .rating-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .rating-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gray-300);
+      background-color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .rating-btn:hover, .rating-btn.selected {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .rating-label {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      color: var(--gray-600);
+    }
+    
+    .observation-box {
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: var(--gray-50);
+    }
+    
+    .observation-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    
+    .tooltip {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      margin-left: 0.25rem;
+      color: var(--gray-500);
+    }
+    
+    .tooltip:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.5rem;
+      background-color: var(--dark);
+      color: white;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    
+    .auto-save-indicator {
+      display: flex;
+      align-items: center;
+      color: var(--gray-600);
+      font-size: 0.875rem;
+    }
+    
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--success);
+      margin-right: 0.5rem;
+    }
+    
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+    
+    .actions-left {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .actions-right {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    /* Template-specific styling */
+    .template-fields {
+      display: none;
+    }
+    
+    .template-fields.active {
+      display: block;
+    }
+    
+    /* Alerts/Notifications */
+    .alert {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      border-left: 4px solid;
+    }
+    
+    .alert-info {
+      background-color: rgba(23, 162, 184, 0.1);
+      border-left-color: var(--info);
+    }
+    
+    .alert-warning {
+      background-color: rgba(255, 193, 7, 0.1);
+      border-left-color: var(--warning);
+    }
+    
+    /* Multiple column layout */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+    
+    .col {
+      flex: 1 0 0%;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    
+    .col-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    
+    /* Modal popup */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .modal {
+      background-color: white;
+      border-radius: 8px;
+      width: 500px;
+      max-width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--gray-500);
+    }
+
+    /* Stepper */
+    .stepper {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .stepper::before {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--gray-300);
+      z-index: 0;
+    }
+    
+    .step {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    
+    .step-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: white;
+      border: 2px solid var(--gray-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .step.active .step-number {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .step.completed .step-number {
+      background-color: var(--success);
+      color: white;
+      border-color: var(--success);
+    }
+    
+    .step-label {
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    
+    /* Spinner for autosaving */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .spinner {
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--gray-300);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 0.5rem;
+      display: inline-block;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .assessment-options {
+        grid-template-columns: 1fr;
+      }
+      
+      .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      
+      .stepper {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .stepper::before {
+        display: none;
+      }
+      
+      .step {
+        flex-direction: row;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">OTrack Assessment Platform</a>
+        <div class="user-info">
+          <span class="text-muted">Gwen O'regan, OT</span>
+          <div class="user-avatar">GO</div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Breadcrumbs -->
+    <ul class="breadcrumbs">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Patients</a></li>
+      <li><a href="#">John Smith</a></li>
+      <li>New Assessment</li>
+    </ul>
+
+    <!-- Patient Info Card -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <h2>John Smith</h2>
+          <span class="text-muted">DOB: 05/12/1985 (39y) • MRN: 234567 • Insurance: BlueCross</span>
+        </div>
+        <div>
+          <span class="badge badge-primary">Active Patient</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1: Select Assessment Template Screen -->
+    <div id="step1" class="card">
+      <div class="card-header">
+        <h3>Step 1: Select Assessment Template</h3>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-info">
+          Choose an assessment template to begin. The selected template will determine the workflow, forms, and fields for this assessment.
+        </div>
+        
+        <div class="assessment-options">
+          <div class="assessment-option" onclick="selectTemplate('sp2')">
+            <div class="assessment-option-icon">📋</div>
+            <h4>Sensory Profile-2</h4>
+            <p class="text-muted">Caregiver questionnaire for sensory processing evaluation</p>
+          </div>
+          
+          <div class="assessment-option" onclick="selectTemplate('spm2')">
+            <div class="assessment-option-icon">🔍</div>
+            <h4>Sensory Processing Measure-2</h4>
+            <p class="text-muted">Multi-environment assessment of sensory processing</p>
+          </div>
+          
+          <div class="assessment-option" onclick="selectTemplate('sperc')">
+            <div class="assessment-option-icon">📝</div>
+            <h4>SPERC Questionnaire</h4>
+            <p class="text-muted">Sensory, processing, emotional regulation, and cognition</p>
+          </div>
+          
+          <div class="assessment-option" onclick="selectTemplate('amps')">
+            <div class="assessment-option-icon">🛠️</div>
+            <h4>AMPS</h4>
+            <p class="text-muted">Assessment of Motor and Process Skills</p>
+          </div>
+          
+          <div class="assessment-option" onclick="selectTemplate('clinical')">
+            <div class="assessment-option-icon">👁️</div>
+            <h4>Clinical Observations</h4>
+            <p class="text-muted">Structured observational assessment framework</p>
+          </div>
+          
+          <div class="assessment-option" onclick="selectTemplate('moho')">
+            <div class="assessment-option-icon">⚙️</div>
+            <h4>MOHO Tools</h4>
+            <p class="text-muted">Model of Human Occupation assessments (OSA, WRI, OCAIRS)</p>
+          </div>
+          
+          <div class="assessment-option" onclick="selectTemplate('beery')">
+            <div class="assessment-option-icon">✏️</div>
+            <h4>Beery VMI</h4>
+            <p class="text-muted">Visual-Motor Integration assessment</p>
+          </div>
+          
+          <div class="assessment-option" onclick="selectTemplate('trauma')">
+            <div class="assessment-option-icon">🔄</div>
+            <h4>Trauma-informed Tools</h4>
+            <p class="text-muted">SAI, PLAY, Circle of Security assessments</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="actions">
+          <div class="actions-left">
+            <button class="btn btn-outline">Cancel</button>
+          </div>
+          <div class="actions-right">
+            <button class="btn btn-primary" onclick="showStep('step2')">Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Template-Specific Assessment Form Screen -->
+    <div id="step2" class="card" style="display: none;">
+      <div class="card-header">
+        <h3>Step 2: Complete Assessment - <span id="selected-template-title">Sensory Profile-2</span></h3>
+        <div class="auto-save-indicator">
+          <div class="spinner"></div>
+          Auto-saving...
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- Progress tracking -->
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        
+        <!-- Template-specific tabs -->
+        <ul class="tabs">
+          <li class="tab-item active">Client Information</li>
+          <li class="tab-item">Assessment Items</li>
+          <li class="tab-item">Scoring</li>
+          <li class="tab-item">Summary</li>
+        </ul>
+        
+        <!-- Template-specific fields -->
+        <div id="sp2-fields" class="template-fields active">
+          <h4>Sensory Profile-2 Assessment</h4>
+          
+          <div class="form-group">
+            <label>Age Range</label>
+            <select class="form-control">
+              <option>Birth - 6 months</option>
+              <option>7-14 months</option>
+              <option>15-35 months</option>
+              <option>3-4 years</option>
+              <option>5-12 years</option>
+              <option>13+ years</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Caregiver Completing Form</label>
+            <input type="text" class="form-control">
+          </div>
+          
+          <div class="form-group">
+            <label>Relationship to Child</label>
+            <select class="form-control">
+              <option>Parent</option>
+              <option>Guardian</option>
+              <option>Grandparent</option>
+              <option>Other Family Member</option>
+              <option>Teacher</option>
+              <option>Other Professional</option>
+            </select>
+          </div>
+          
+          <h4>Sensory Systems Evaluation</h4>
+          
+          <div class="observation-box">
+            <div class="observation-header">
+              <h5>Auditory Processing <span class="tooltip" data-tooltip="How the child processes and responds to sounds">ⓘ</span></h5>
+            </div>
+            
+            <div class="form-group">
+              <label>1. Child is distracted or has trouble functioning if there is a lot of noise around</label>
+              <div class="rating-scale">
+                <div class="rating-item">
+                  <button class="rating-btn">1</button>
+                  <span class="rating-label">Almost Never</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">2</button>
+                  <span class="rating-label">Seldom</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">3</button>
+                  <span class="rating-label">Occasionally</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">4</button>
+                  <span class="rating-label">Frequently</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">5</button>
+                  <span class="rating-label">Almost Always</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>2. Appears to not hear what you say (for example, does not "tune-in" to what you say, appears to ignore you)</label>
+              <div class="rating-scale">
+                <div class="rating-item">
+                  <button class="rating-btn">1</button>
+                  <span class="rating-label">Almost Never</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">2</button>
+                  <span class="rating-label">Seldom</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">3</button>
+                  <span class="rating-label">Occasionally</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">4</button>
+                  <span class="rating-label">Frequently</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">5</button>
+                  <span class="rating-label">Almost Always</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Additional items would continue here -->
+          </div>
+          
+          <div class="observation-box">
+            <div class="observation-header">
+              <h5>Visual Processing <span class="tooltip" data-tooltip="How the child processes and responds to visual stimuli">ⓘ</span></h5>
+            </div>
+            
+            <!-- Visual processing items would go here -->
+            <div class="form-group">
+              <label>10. Prefers to be in the dark</label>
+              <div class="rating-scale">
+                <div class="rating-item">
+                  <button class="rating-btn">1</button>
+                  <span class="rating-label">Almost Never</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">2</button>
+                  <span class="rating-label">Seldom</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">3</button>
+                  <span class="rating-label">Occasionally</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">4</button>
+                  <span class="rating-label">Frequently</span>
+                </div>
+                <div class="rating-item">
+                  <button class="rating-btn">5</button>
+                  <span class="rating-label">Almost Always</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Additional visual items would continue -->
+          </div>
+          
+          <!-- Smart prompts for missing information -->
+          <div class="alert alert-warning">
+            <strong>Missing Information:</strong> Please complete all items in the Auditory Processing section before proceeding.
+          </div>
+        </div>
+        
+        <!-- AMPS Assessment Fields (initially hidden) -->
+        <div id="amps-fields" class="template-fields">
+          <h4>Assessment of Motor and Process Skills (AMPS)</h4>
+          
+          <div class="form-group">
+            <label>Task Selection</label>
+            <select class="form-control">
+              <option>Prepare a simple sandwich</option>
+              <option>Making a bed</option>
+              <option>Sweeping the floor</option>
+              <option>Setting a table</option>
+              <option>Folding laundry</option>
+              <option>Other (specify below)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Custom Task (if applicable)</label>
+            <input type="text" class="form-control">
+          </div>
+          
+          <h4>Motor Skills</h4>
+          
+          <div class="observation-box">
+            <div class="observation-header">
+              <h5>Posture <span class="tooltip" data-tooltip="Stabilizes trunk and maintains balance while standing or sitting">ⓘ</span></h5>
+            </div>
+            
+            <div class="rating-scale">
+              <div class="rating-item">
+                <button class="rating-btn">1</button>
+                <span class="rating-label">Deficit</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">2</button>
+                <span class="rating-label">Ineffective</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">3</button>
+                <span class="rating-label">Questionable</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">4</button>
+                <span class="rating-label">Competent</span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Notes</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          
+          <div class="observation-box">
+            <div class="observation-header">
+              <h5>Mobility <span class="tooltip" data-tooltip="Moves body and objects through space">ⓘ</span></h5>
+            </div>
+            
+            <div class="rating-scale">
+              <div class="rating-item">
+                <button class="rating-btn">1</button>
+                <span class="rating-label">Deficit</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">2</button>
+                <span class="rating-label">Ineffective</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">3</button>
+                <span class="rating-label">Questionable</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">4</button>
+                <span class="rating-label">Competent</span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Notes</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          
+          <h4>Process Skills</h4>
+          
+          <div class="observation-box">
+            <div class="observation-header">
+              <h5>Attention <span class="tooltip" data-tooltip="Focuses and maintains attention throughout task">ⓘ</span></h5>
+            </div>
+            
+            <div class="rating-scale">
+              <div class="rating-item">
+                <button class="rating-btn">1</button>
+                <span class="rating-label">Deficit</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">2</button>
+                <span class="rating-label">Ineffective</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">3</button>
+                <span class="rating-label">Questionable</span>
+              </div>
+              <div class="rating-item">
+                <button class="rating-btn">4</button>
+                <span class="rating-label">Competent</span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Notes</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Beery VMI Fields (initially hidden) -->
+        <div id="beery-fields" class="template-fields">
+          <h4>Beery VMI (Visual-Motor Integration) Assessment</h4>
+          
+          <div class="form-group">
+            <label>Test Date</label>
+            <input type="date" class="form-control">
+          </div>
+          
+          <div class="form-group">
+            <label>Testing Environment</label>
+            <select class="form-control">
+              <option>Quiet, individual setting</option>
+              <option>Classroom</option>
+              <option>Therapy room</option>
+              <option>Home</option>
+              <option>Other</option>
+            </select>
+          </div>
+          
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label>VMI Raw Score</label>
+                <input type="number" class="form-control">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label>VMI Standard Score</label>
+                <input type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label>Visual Perception Raw Score</label>
+                <input type="number" class="form-control">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label>Visual Perception Standard Score</label>
+                <input type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label>Motor Coordination Raw Score</label>
+                <input type="number" class="form-control">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label>Motor Coordination Standard Score</label>
+                <input type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Observations</label>
+            <textarea class="form-control" rows="5"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label>Percentile Rank</label>
+            <select class="form-control">
+              <option>Below 1st percentile</option>
+              <option>1st-5th percentile</option>
+              <option>6th-10th percentile</option>
+              <option>11th-25th percentile</option>
+              <option>26th-50th percentile</option>
+              <option>51st-75th percentile</option>
+              <option>76th-90th percentile</option>
+              <option>91st-95th percentile</option>
+              <option>Above 95th percentile</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- MOHO Fields (initially hidden) -->
+        <div id="moho-fields" class="template-fields">
+          <div class="form-group">
+            <label>Select MOHO Assessment</label>
+            <select class="form-control" onchange="selectMohoTool()">
+              <option>Occupational Self Assessment (OSA)</option>
+              <option>Worker Role Interview (WRI)</option>
+              <option>Occupational Circumstances Assessment - Interview and Rating Scale (OCAIRS)</option>
+            </select>
+          </div>
+          
+          <!-- OSA Specific -->
+          <div id="osa-fields">
+            <h4>Occupational Self Assessment (OSA)</h4>
+            
+            <div class="observation-box">
+              <h5>Competence</h5>
+              
+              <div class="form-group">
+                <label>1. Concentrating on my tasks</label>
+                <div class="rating-scale">
+                  <div class="rating-item">
+                    <button class="rating-btn">1</button>
+                    <span class="rating-label">I have a lot of problems doing this</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">2</button>
+                    <span class="rating-label">I have some difficulty doing this</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">3</button>
+                    <span class="rating-label">I do this well</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">4</button>
+                    <span class="rating-label">I do this extremely well</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label>2. Taking care of the place where I live</label>
+                <div class="rating-scale">
+                  <div class="rating-item">
+                    <button class="rating-btn">1</button>
+                    <span class="rating-label">I have a lot of problems doing this</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">2</button>
+                    <span class="rating-label">I have some difficulty doing this</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">3</button>
+                    <span class="rating-label">I do this well</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">4</button>
+                    <span class="rating-label">I do this extremely well</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="observation-box">
+              <h5>Values</h5>
+              
+              <div class="form-group">
+                <label>1. Concentrating on my tasks</label>
+                <div class="rating-scale">
+                  <div class="rating-item">
+                    <button class="rating-btn">1</button>
+                    <span class="rating-label">Not important to me</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">2</button>
+                    <span class="rating-label">Important to me</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">3</button>
+                    <span class="rating-label">More important to me</span>
+                  </div>
+                  <div class="rating-item">
+                    <button class="rating-btn">4</button>
+                    <span class="rating-label">Most important to me</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Clinical Observations (initially hidden) -->
+        <div id="clinical-fields" class="template-fields">
+          <h4>Clinical Observations</h4>
+          
+          <div class="form-group">
+            <label>Setting</label>
+            <select class="form-control">
+              <option>Clinic</option>
+              <option>Classroom</option>
+              <option>Home</option>
+              <option>Community</option>
+              <option>Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Duration of Observation</label>
+            <input type="text" class="form-control" placeholder="e.g., 45 minutes">
+          </div>
+          
+          <div class="observation-box">
+            <h5>Postural Control and Movement</h5>
+            
+            <div class="form-group">
+              <label>Observations</label>
+              <textarea class="form-control" rows="4"></textarea>
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" id="postural1">
+              <label for="postural1">Difficulty maintaining seated posture</label>
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" id="postural2">
+              <label for="postural2">Poor balance reactions</label>
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" id="postural3">
+              <label for="postural3">Seeks movement frequently</label>
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" id="postural4">
+              <label for="postural4">Avoids movement activities</label>
+            </div>
+          </div>
+          
+          <div class="observation-box">
+            <h5>Fine Motor Skills</h5>
+            
+            <div class="form-group">
+              <label>Observations</label>
+              <textarea class="form-control" rows="4"></textarea>
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" id="fine1">
+              <label for="fine1">Immature grasp pattern</label>
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" id="fine2">
+              <label for="fine2">Poor bilateral coordination</label>
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" id="fine3">
+              <label for="fine3">Poor in-hand manipulation</label>
+            </div>
+          </div>
+          
+          <div class="observation-box">
+            <h5>Visual-Perceptual Skills</h5>
+            
+            <div class="form-group">
+              <label>Observations</label>
+              <textarea class="form-control" rows="4"></textarea>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Additional Comments</label>
+            <textarea class="form-control" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="actions">
+          <div class="actions-left">
+            <button class="btn btn-outline" onclick="showStep('step1')">Back</button>
+          </div>
+          <div class="actions-right">
+            <button class="btn btn-outline">Save as Draft</button>
+            <button class="btn btn-primary" onclick="showStep('step3')">Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Summary & Recommendations Screen -->
+    <div id="step3" class="card" style="display: none;">
+      <div class="card-header">
+        <h3>Step 3: Summary & Recommendations</h3>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-info">
+          Review the auto-generated summary below and add your professional insights and recommendations.
+        </div>
+        
+        <div class="form-group">
+          <label>Assessment Summary</label>
+          <textarea class="form-control" rows="6" readonly>John Smith was assessed using the Sensory Profile-2 on 04/20/2025. Results indicate challenges in auditory processing with scores falling in the "definite difference" range. Visual and tactile processing appear to be within typical ranges. The client demonstrates a sensory seeking pattern in vestibular processing with increased activity level and difficulty with attention.
+
+Based on caregiver report, these sensory processing difficulties impact the client's participation in classroom activities and social interactions with peers.</textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Clinical Insights <span class="text-muted">(auto-populated from assessment data, modify as needed)</span></label>
+          <textarea class="form-control" rows="6">Client demonstrates a sensory processing pattern consistent with sensory modulation difficulties, particularly in the areas of auditory filtering and sensory seeking. These difficulties appear to impact attention, emotional regulation, and participation in structured activities.
+
+The assessment results suggest that John would benefit from sensory-based interventions targeting modulation of auditory input and providing appropriate opportunities for vestibular and proprioceptive input within a structured environment.</textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Recommendations</label>
+          <textarea class="form-control" rows="6">Based on assessment results, the following recommendations are proposed:
+
+1. Implement a sensory diet providing regular proprioceptive and vestibular input throughout the day
+2. Establish environmental modifications in classroom setting (e.g., noise-cancelling headphones, preferential seating away from environmental noise)
+3. Begin weekly OT intervention (8-10 sessions) focusing on sensory integration techniques and self-regulation strategies
+4. Parent/teacher education on sensory processing patterns and supportive strategies
+5. Reassessment in 6 months to evaluate progress</textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Goals</label>
+          <textarea class="form-control" rows="4">1. Client will demonstrate improved self-regulation using sensory strategies when faced with challenging auditory input, as measured by reduced behavioral outbursts (from 5-6/day to 1-2/day) within 3 months.
+
+2. Client will independently identify and utilize appropriate sensory tools when feeling dysregulated in the classroom setting, with 80% success rate within 6 months.
+
+3. Client will participate in structured classroom activities for 20-minute periods with appropriate attention to task, 4/5 opportunities within 3 months.</textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Follow-up Schedule</label>
+          <select class="form-control">
+            <option>Weekly sessions</option>
+            <option>Bi-weekly sessions</option>
+            <option>Monthly check-ins</option>
+            <option>Quarterly reassessment</option>
+            <option>Custom schedule (specify in notes)</option>
+          </select>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="actions">
+          <div class="actions-left">
+            <button class="btn btn-outline" onclick="showStep('step2')">Back</button>
+          </div>
+          <div class="actions-right">
+            <button class="btn btn-outline">Save as Draft</button>
+            <button class="btn btn-primary" onclick="showStep('step4')">Generate Report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Save & Export Screen -->
+    <div id="step4" class="card" style="display: none;">
+      <div class="card-header">
+        <h3>Step 4: Save & Export Assessment</h3>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-success">
+          <strong>Assessment Complete!</strong> The assessment has been saved to John Smith's profile. You can now export or share the report.
+        </div>
+        
+        <h4>Export Options</h4>
+        
+        <div class="form-group">
+          <div class="form-check">
+            <input type="checkbox" id="export1" checked>
+            <label for="export1">Include raw assessment data</label>
+          </div>
+          
+          <div class="form-check">
+            <input type="checkbox" id="export2" checked>
+            <label for="export2">Include summary and recommendations</label>
+          </div>
+          
+          <div class="form-check">
+            <input type="checkbox" id="export3" checked>
+            <label for="export3">Include visualizations and scoring charts</label>
+          </div>
+          
+          <div class="form-check">
+            <input type="checkbox" id="export4">
+            <label for="export4">Include educational handouts for parents/caregivers</label>
+          </div>
+        </div>
+        
+        <h4>Share Report</h4>
+        
+        <div class="form-group">
+          <label>Email Report To</label>
+          <input type="text" class="form-control" placeholder="Enter email addresses (comma separated)">
+        </div>
+        
+        <div class="form-group">
+          <label>Message (Optional)</label>
+          <textarea class="form-control" rows="3" placeholder="Add a message to accompany the report"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Add to Patient's Medical Record</label>
+          <select class="form-control">
+            <option>Yes, add to EHR</option>
+            <option>No, save to OT records only</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Schedule Follow-up</label>
+          <input type="date" class="form-control">
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="actions">
+          <div class="actions-left">
+            <button class="btn btn-outline" onclick="showStep('step3')">Back</button>
+          </div>
+          <div class="actions-right">
+            <button class="btn btn-outline">
+              <span>PDF</span>
+            </button>
+            <button class="btn btn-outline">
+              <span>Word</span>
+            </button>
+            <button class="btn btn-primary">
+              <span>Send & Save</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal for template description (shown when info icon is clicked) -->
+  <div class="modal-overlay" style="display: none;" id="template-info-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>About Sensory Profile-2</h3>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>The Sensory Profile-2 is a standardized assessment that measures a child's sensory processing patterns. It consists of caregiver questionnaires specific to different age groups:</p>
+        
+        <ul>
+          <li><strong>Infant (0-6 months)</strong>: 25 items</li>
+          <li><strong>Toddler (7-35 months)</strong>: 54 items</li>
+          <li><strong>Child (3-14 years)</strong>: 86 items</li>
+          <li><strong>Adolescent/Adult (15+ years)</strong>: 60 items</li>
+        </ul>
+        
+        <p>The assessment evaluates processing across sensory systems (auditory, visual, vestibular, etc.) and provides scores in four quadrants:</p>
+        
+        <ul>
+          <li>Seeking/Seeker</li>
+          <li>Avoiding/Avoider</li>
+          <li>Sensitivity/Sensor</li>
+          <li>Registration/Bystander</li>
+        </ul>
+        
+        <p>Results are reported as "Typical Performance," "Probable Difference," or "Definite Difference" when compared to normative data.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript functionality -->
+  <script>
+    // Show/hide steps
+    function showStep(stepId) {
+      // Hide all steps
+      document.getElementById('step1').style.display = 'none';
+      document.getElementById('step2').style.display = 'none';
+      document.getElementById('step3').style.display = 'none';
+      document.getElementById('step4').style.display = 'none';
+      
+      // Show the requested step
+      document.getElementById(stepId).style.display = 'block';
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+    
+    // Select assessment template
+    function selectTemplate(templateId) {
+      // Remove selection from all options
+      const options = document.querySelectorAll('.assessment-option');
+      options.forEach(option => {
+        option.classList.remove('selected');
+      });
+      
+      // Add selection to clicked option
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('selected');
+      }
+      
+      // Update template title
+      let templateTitle = '';
+      switch(templateId) {
+        case 'sp2':
+          templateTitle = 'Sensory Profile-2';
+          break;
+        case 'spm2':
+          templateTitle = 'Sensory Processing Measure-2';
+          break;
+        case 'sperc':
+          templateTitle = 'SPERC Questionnaire';
+          break;
+        case 'amps':
+          templateTitle = 'Assessment of Motor and Process Skills';
+          break;
+        case 'clinical':
+          templateTitle = 'Clinical Observations';
+          break;
+        case 'moho':
+          templateTitle = 'MOHO Tools';
+          break;
+        case 'beery':
+          templateTitle = 'Beery VMI';
+          break;
+        case 'trauma':
+          templateTitle = 'Trauma-informed Tools';
+          break;
+      }
+      
+      document.getElementById('selected-template-title').textContent = templateTitle;
+      
+      // Hide all template-specific fields
+      const templateFields = document.querySelectorAll('.template-fields');
+      templateFields.forEach(field => {
+        field.classList.remove('active');
+      });
+      
+      // Show fields for selected template
+      const selectedFields = document.getElementById(templateId + '-fields');
+      if (selectedFields) {
+        selectedFields.classList.add('active');
+      }
+    }
+    
+    // Select MOHO tool
+    function selectMohoTool() {
+      // Implementation would show/hide specific MOHO tool fields
+      console.log('MOHO tool selected');
+    }
+    
+    // Modal controls
+    function openModal() {
+      document.getElementById('template-info-modal').style.display = 'flex';
+    }
+    
+    function closeModal() {
+      document.getElementById('template-info-modal').style.display = 'none';
+    }
+    
+    // Rating scale selection
+    const ratingButtons = document.querySelectorAll('.rating-btn');
+    ratingButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove selection from siblings
+        const siblings = this.parentElement.parentElement.querySelectorAll('.rating-btn');
+        siblings.forEach(sibling => {
+          sibling.classList.remove('selected');
+        });
+        
+        // Add selection to clicked button
+        this.classList.add('selected');
+      });
+    });
+  </script>
+</body>
+</html>

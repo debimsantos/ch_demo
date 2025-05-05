@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT/Sensory Intake - Family History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .caregiver-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .caregiver-column {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .household-member {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .household-member input:nth-child(1) {
+            flex: 2;
+        }
+        .household-member input:nth-child(2) {
+            flex: 2;
+        }
+        .household-member input:nth-child(3) {
+            flex: 1;
+            width: 60px;
+        }
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .emergency-contact {
+            display: flex;
+            gap: 10px;
+        }
+        .emergency-contact input {
+            flex: 1;
+        }
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn.prev {
+            background-color: #f44336;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .progress-bar {
+            background-color: #f1f1f1;
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 37.5%; /* 3/8 pages */
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress">3/8</div>
+    </div>
+    <h1>OCCUPATIONAL THERAPY / SENSORY<br>Intake Questionnaire</h1>
+    
+    <form id="otSensoryForm">
+        <h2>Family History:</h2>
+        
+        <div class="caregiver-section">
+            <div class="caregiver-column">
+                <div class="form-group">
+                    <label for="caregiver1_name">Caregiver #1 Name:</label>
+                    <input type="text" id="caregiver1_name" name="caregiver1_name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="caregiver1_age">Age:</label>
+                    <input type="number" id="caregiver1_age" name="caregiver1_age" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="caregiver1_relationship">Relationship to Child:</label>
+                    <input type="text" id="caregiver1_relationship" name="caregiver1_relationship" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Caregiver preferred method of learning:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_listening" name="caregiver1_learning[]" value="listening">
+                            <label for="caregiver1_listening">Listening</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_reading" name="caregiver1_learning[]" value="reading">
+                            <label for="caregiver1_reading">Reading</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_pictures" name="caregiver1_learning[]" value="pictures">
+                            <label for="caregiver1_pictures">Pictures</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_demonstration" name="caregiver1_learning[]" value="demonstration">
+                            <label for="caregiver1_demonstration">Demonstration</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_other" name="caregiver1_learning[]" value="other">
+                            <label for="caregiver1_other">Other:</label>
+                            <input type="text" id="caregiver1_other_text" name="caregiver1_other_text" style="width: 100px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Relationship:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_biological" name="caregiver1_relationship_type[]" value="biological">
+                            <label for="caregiver1_biological">Biological</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_adopted" name="caregiver1_relationship_type[]" value="adopted">
+                            <label for="caregiver1_adopted">Adopted</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_stepchild" name="caregiver1_relationship_type[]" value="stepchild">
+                            <label for="caregiver1_stepchild">Step-child</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_foster" name="caregiver1_relationship_type[]" value="foster">
+                            <label for="caregiver1_foster">Foster</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver1_other_rel" name="caregiver1_relationship_type[]" value="other">
+                            <label for="caregiver1_other_rel">Other:</label>
+                            <input type="text" id="caregiver1_other_rel_text" name="caregiver1_other_rel_text" style="width: 100px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="caregiver-column">
+                <div class="form-group">
+                    <label for="caregiver2_name">Caregiver #2 Name:</label>
+                    <input type="text" id="caregiver2_name" name="caregiver2_name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="caregiver2_age">Age:</label>
+                    <input type="number" id="caregiver2_age" name="caregiver2_age">
+                </div>
+                
+                <div class="form-group">
+                    <label for="caregiver2_relationship">Relationship to Child:</label>
+                    <input type="text" id="caregiver2_relationship" name="caregiver2_relationship">
+                </div>
+                
+                <div class="form-group">
+                    <label>Caregiver preferred method of learning:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_listening" name="caregiver2_learning[]" value="listening">
+                            <label for="caregiver2_listening">Listening</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_reading" name="caregiver2_learning[]" value="reading">
+                            <label for="caregiver2_reading">Reading</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_pictures" name="caregiver2_learning[]" value="pictures">
+                            <label for="caregiver2_pictures">Pictures</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_demonstration" name="caregiver2_learning[]" value="demonstration">
+                            <label for="caregiver2_demonstration">Demonstration</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_other" name="caregiver2_learning[]" value="other">
+                            <label for="caregiver2_other">Other:</label>
+                            <input type="text" id="caregiver2_other_text" name="caregiver2_other_text" style="width: 100px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Relationship:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_biological" name="caregiver2_relationship_type[]" value="biological">
+                            <label for="caregiver2_biological">Biological</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_adopted" name="caregiver2_relationship_type[]" value="adopted">
+                            <label for="caregiver2_adopted">Adopted</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_stepchild" name="caregiver2_relationship_type[]" value="stepchild">
+                            <label for="caregiver2_stepchild">Step-child</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_foster" name="caregiver2_relationship_type[]" value="foster">
+                            <label for="caregiver2_foster">Foster</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="caregiver2_other_rel" name="caregiver2_relationship_type[]" value="other">
+                            <label for="caregiver2_other_rel">Other:</label>
+                            <input type="text" id="caregiver2_other_rel_text" name="caregiver2_other_rel_text" style="width: 100px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="home_language">Language(s) Spoken in the Home:</label>
+            <input type="text" id="home_language" name="home_language" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="primary_language">Primary Language of Caregiver:</label>
+            <input type="text" id="primary_language" name="primary_language" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Persons currently living in home environment(s):</label>
+            <div id="household_members">
+                <div class="household-member">
+                    <input type="text" name="household_name[]" placeholder="Name" required>
+                    <input type="text" name="household_relationship[]" placeholder="Relationship" required>
+                    <input type="number" name="household_age[]" placeholder="Age" required>
+                </div>
+                <div class="household-member">
+                    <input type="text" name="household_name[]" placeholder="Name">
+                    <input type="text" name="household_relationship[]" placeholder="Relationship">
+                    <input type="number" name="household_age[]" placeholder="Age">
+                </div>
+                <div class="household-member">
+                    <input type="text" name="household_name[]" placeholder="Name">
+                    <input type="text" name="household_relationship[]" placeholder="Relationship">
+                    <input type="number" name="household_age[]" placeholder="Age">
+                </div>
+                <div class="household-member">
+                    <input type="text" name="household_name[]" placeholder="Name">
+                    <input type="text" name="household_relationship[]" placeholder="Relationship">
+                    <input type="number" name="household_age[]" placeholder="Age">
+                </div>
+                <div class="household-member">
+                    <input type="text" name="household_name[]" placeholder="Name">
+                    <input type="text" name="household_relationship[]" placeholder="Relationship">
+                    <input type="number" name="household_age[]" placeholder="Age">
+                </div>
+                <div class="household-member">
+                    <input type="text" name="household_name[]" placeholder="Name">
+                    <input type="text" name="household_relationship[]" placeholder="Relationship">
+                    <input type="number" name="household_age[]" placeholder="Age">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="family_history">Is there any family history of developmental, motor, social, or language delays or diagnoses? (If yes, please explain.)</label>
+            <textarea id="family_history" name="family_history" rows="4"></textarea>
+        </div>
+        
+        <h2>CONTACT INFORMATION:</h2>
+        
+        <div class="form-group">
+            <label>The following are the best contact numbers for me to most reliably be reached during business hours:</label>
+            <div style="display: flex; gap: 20px; margin-top: 10px;">
+                <input type="tel" id="contact_phone1" name="contact_phone1" placeholder="Phone #1" required>
+                <input type="tel" id="contact_phone2" name="contact_phone2" placeholder="Phone #2">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>EMERGENCY CONTACT: In case of an emergency, I hereby authorize only the following persons to pick up my child:</label>
+            <div class="contacts">
+                <div class="emergency-contact">
+                    <input type="text" name="emergency_name[]" placeholder="Name" required>
+                    <input type="text" name="emergency_relationship[]" placeholder="Relationship" required>
+                    <input type="tel" name="emergency_phone[]" placeholder="Phone" required>
+                </div>
+                <div class="emergency-contact">
+                    <input type="text" name="emergency_name[]" placeholder="Name">
+                    <input type="text" name="emergency_relationship[]" placeholder="Relationship">
+                    <input type="tel" name="emergency_phone[]" placeholder="Phone">
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button type="button" class="btn prev" onclick="window.location.href='page2.html'">Previous</button>
+            <button type="button" class="btn" onclick="window.location.href='page4.html'">Next</button>
+        </div>
+    </form>
+</body>
+</html>

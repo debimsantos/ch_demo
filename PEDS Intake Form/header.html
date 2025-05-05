@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT/Sensory Intake Form Navigation</title>
+    <style>
+        /* Navigation header styles */
+        .nav-header {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #4CAF50;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .title-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .form-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin: 0;
+            font-weight: bold;
+        }
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            gap: 3px;
+        }
+        .nav-item {
+            margin-bottom: -1px;
+        }
+        .nav-link {
+            display: block;
+            padding: 8px 10px;
+            text-decoration: none;
+            background-color: #e9ecef;
+            color: #495057;
+            border-radius: 4px 4px 0 0;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background-color: #dee2e6;
+            color: #212529;
+        }
+        .nav-link.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .save-status {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-left: auto;
+            padding-left: 10px;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 767px) {
+            .nav-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 5px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .title-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .form-title {
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Include in each page to show current page */
+        /* Update this class in each individual page */
+        #nav1 { background-color: #4CAF50; color: white; } /* For page 1 */
+        /*
+        #nav2 { background-color: #4CAF50; color: white; } // For page 2
+        #nav3 { background-color: #4CAF50; color: white; } // For page 3
+        #nav4 { background-color: #4CAF50; color: white; } // For page 4
+        #nav5 { background-color: #4CAF50; color: white; } // For page 5
+        #nav6 { background-color: #4CAF50; color: white; } // For page 6
+        #nav7 { background-color: #4CAF50; color: white; } // For page 7
+        #nav8 { background-color: #4CAF50; color: white; } // For page 8
+        */
+    </style>
+</head>
+<body>
+    <header class="nav-header">
+        <div class="container">
+            <div class="title-section">
+                <h1 class="form-title">OCCUPATIONAL THERAPY / SENSORY INTAKE QUESTIONNAIRE</h1>
+                <span class="save-status" id="saveStatus">All changes saved</span>
+            </div>
+            <nav>
+                <ul class="nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav1" href="page1.html">1. Personal Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav2" href="page2.html">2. Concerns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav3" href="page3.html">3. Family History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav4" href="page4.html">4. Birth History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav5" href="page5.html">5. Medical Health</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav6" href="page6.html">6. Specialists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav7" href="page7.html">7. Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav8" href="page8.html">8. Daily Challenges</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        // Basic auto-save functionality (would be expanded in a real implementation)
+        document.addEventListener('change', function(e) {
+            const saveStatus = document.getElementById('saveStatus');
+            saveStatus.textContent = 'Saving...';
+            
+            // Simulate saving delay
+            setTimeout(function() {
+                saveStatus.textContent = 'All changes saved';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
