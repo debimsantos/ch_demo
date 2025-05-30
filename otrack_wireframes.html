@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTRACK System Wireframes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .wireframe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .wireframe {
+            background: white;
+            border: 2px solid #333;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .wireframe h2 {
+            margin: 0 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4CAF50;
+            color: #333;
+        }
+        
+        .wireframe-content {
+            border: 1px solid #ccc;
+            min-height: 400px;
+            padding: 15px;
+            background: #fafafa;
+        }
+        
+        .header-bar {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            margin: -15px -15px 15px -15px;
+            font-weight: bold;
+        }
+        
+        .nav-bar {
+            background: #e9ecef;
+            padding: 8px 15px;
+            margin: -15px -15px 15px -15px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .nav-item {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 10px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        
+        .nav-item.active {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .content-section {
+            border: 1px dashed #999;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        
+        .form-field {
+            border: 1px solid #ccc;
+            padding: 8px;
+            margin: 5px 0;
+            background: white;
+            min-height: 20px;
+        }
+        
+        .button {
+            background: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        
+        .button.secondary {
+            background: #6c757d;
+        }
+        
+        .button.danger {
+            background: #dc3545;
+        }
+        
+        .alert-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        
+        .alert-box.danger {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .two-column {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            border: 1px dashed #999;
+            padding: 10px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .data-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: #f8f9fa;
+            border: 1px dashed #999;
+            padding: 15px;
+            float: right;
+            margin: 0 0 15px 15px;
+        }
+        
+        .main-content {
+            overflow: hidden;
+        }
+        
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .assessment-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background: white;
+        }
+        
+        .progress-bar {
+            background: #e9ecef;
+            height: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: #4CAF50;
+            height: 100%;
+            width: 35%;
+        }
+        
+        .notes {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <h1 style="text-align: center; color: #333; margin-bottom: 30px;">OTRACK System Wireframes - MVP</h1>
+        
+        <!-- 1. Dashboard / Landing Page -->
+        <div class="wireframe">
+            <h2>1. Therapist Dashboard (Gwen's Landing Page)</h2>
+            <div class="wireframe-content">
+                <div class="header-bar">OTRACK Digital Assessment System | Welcome, Gwen</div>
+                
+                <div class="nav-bar">
+                    <span class="nav-item active">Dashboard</span>
+                    <span class="nav-item">Patients</span>
+                    <span class="nav-item">Assessments</span>
+                    <span class="nav-item">Reports</span>
+                    <span class="nav-item">Settings</span>
+                </div>
+                
+                <div class="two-column">
+                    <div class="column">
+                        <div class="alert-box danger">🚨 PRIORITY ALERTS (3)</div>
+                        <ul>
+                            <li>Sarah M. - High risk responses flagged</li>
+                            <li>James K. - Pre-assessment incomplete (3 days)</li>
+                            <li>Emma L. - Assessment due today</li>
+                        </ul>
+                        
+                        <h3>Today's Schedule</h3>
+                        <div class="content-section">
+                            <div>9:00 AM - Sarah M. (Assessment)</div>
+                            <div>11:00 AM - James K. (Follow-up)</div>
+                            <div>2:00 PM - Emma L. (Initial Eval)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="column">
+                        <h3>Quick Actions</h3>
+                        <button class="button">+ Add New Patient</button>
+                        <button class="button secondary">Send Pre-Assessment</button>
+                        <button class="button secondary">Generate Report</button>
+                        
+                        <h3>Assessment Status Overview</h3>
+                        <table class="data-table">
+                            <tr>
+                                <th>Patient</th>
+                                <th>Assessment Status</th>
+                                <th>Date</th>
+                            </tr>
+                            <tr>
+                                <td>Sarah M.</td>
+                                <td>Intake Complete - Ready for OTRACK</td>
+                                <td>Today</td>
+                            </tr>
+                            <tr>
+                                <td>James K.</td>
+                                <td>Intake Form Sent</td>
+                                <td>3 days ago</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="notes">Key features: Priority alerts, quick access to flagged patients, today's schedule, one-click actions</div>
+        </div>
+
+        <!-- 2. Patient Management -->
+        <div class="wireframe">
+            <h2>2. Patient Management</h2>
+            <div class="wireframe-content">
+                <div class="header-bar">OTRACK | Patient Management</div>
+                
+                <div class="nav-bar">
+                    <span class="nav-item">Dashboard</span>
+                    <span class="nav-item active">Patients</span>
+                    <span class="nav-item">Assessments</span>
+                    <span class="nav-item">Reports</span>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <button class="button">+ Add New Patient</button>
+                    <input type="text" placeholder="Search patients..." style="padding: 8px; margin-left: 10px; width: 200px;">
+                    <button class="button secondary">Search</button>
+                </div>
+                
+                <table class="data-table">
+                    <tr>
+                        <th>MRN</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Last Assessment</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        <td>12345</td>
+                        <td>Sarah Miller</td>
+                        <td>8</td>
+                        <td>2025-05-28</td>
+                        <td>Intake Complete - Flagged</td>
+                        <td>
+                            <button class="button" style="padding: 4px 8px; font-size: 12px;">View</button>
+                            <button class="button secondary" style="padding: 4px 8px; font-size: 12px;">Assess</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12346</td>
+                        <td>James Kim</td>
+                        <td>6</td>
+                        <td>2025-05-25</td>
+                        <td>Intake In Progress</td>
+                        <td>
+                            <button class="button" style="padding: 4px 8px; font-size: 12px;">View</button>
+                            <button class="button secondary" style="padding: 4px 8px; font-size: 12px;">Continue</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12347</td>
+                        <td>Emma Lopez</td>
+                        <td>12</td>
+                        <td>-</td>
+                        <td>Intake Form Sent</td>
+                        <td>
+                            <button class="button" style="padding: 4px 8px; font-size: 12px;">Send Form</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="notes">Features: Patient list with status indicators, search functionality, quick actions for each patient</div>
+        </div>
+
+        <!-- 3. Pre-Assessment Review (AFTER intake form completion) -->
+        <div class="wireframe">
+            <h2>3. Intake Form Review & Analysis (After Patient Completes Form)</h2>
+            <div class="wireframe-content">
+                <div class="header-bar">OTRACK | Intake Review - Sarah Miller (Age 8)</div>
+                
+                <div class="sidebar">
+                    <h4>Patient Info</h4>
+                    <div>MRN: 12345</div>
+                    <div>DOB: 01/15/2017</div>
+                    <div>Diagnosis: ADHD</div>
+                    
+                    <h4>Form Status</h4>
+                    <div>Completed: 5/28/2025</div>
+                    <div>Completion Time: 45 min</div>
+                    
+                    <button class="button">View Full Form</button>
+                    <button class="button secondary">Print Summary</button>
+                </div>
+                
+                <div class="main-content">
+                    <div class="alert-box danger">
+                        <strong>🚨 HIGH PRIORITY ALERTS (3)</strong>
+                        <ul>
+                            <li>Safety concern flagged in daily challenges</li>
+                            <li>Significant regression noted in motor skills</li>
+                            <li>Parent reports extreme behavioral changes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alert-box">
+                        <strong>⚠️ MODERATE CONCERNS (5)</strong>
+                        <ul>
+                            <li>Sleep disturbances reported</li>
+                            <li>New feeding difficulties</li>
+                            <li>School performance decline</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>AI Analysis Summary</h3>
+                    <div class="content-section">
+                        <strong>Focus Areas for Assessment:</strong>
+                        <ul>
+                            <li>Safety evaluation (highest priority)</li>
+                            <li>Motor skill regression assessment</li>
+                            <li>Behavioral pattern analysis</li>
+                            <li>Sensory processing changes</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Recommended OTRACK Domains</h3>
+                    <div class="assessment-grid">
+                        <div class="assessment-item" style="border-color: red; background: #fee;">
+                            <strong>Safety & Judgment</strong><br>
+                            <small>HIGH PRIORITY</small>
+                        </div>
+                        <div class="assessment-item" style="border-color: orange; background: #ffa;">
+                            <strong>Motor Skills</strong><br>
+                            <small>MODERATE</small>
+                        </div>
+                        <div class="assessment-item" style="border-color: orange; background: #ffa;">
+                            <strong>Behavior</strong><br>
+                            <small>MODERATE</small>
+                        </div>
+                        <div class="assessment-item">
+                            <strong>Sensory</strong><br>
+                            <small>REVIEW</small>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="button">Start OTRACK Assessment</button>
+                        <button class="button secondary">Schedule Follow-up</button>
+                    </div>
+                </div>
+            </div>
+            <div class="notes">Key features: AI-flagged priority issues, analysis summary, recommended focus areas, smart pre-population</div>
+        </div>
+
+        <!-- 4. OTRACK Assessment Interface (Simplified) -->
+        <div class="wireframe">
+            <h2>4. OTRACK Assessment Interface (Focus on Current Task)</h2>
+            <div class="wireframe-content">
+                <div class="header-bar">OTRACK Assessment - Sarah Miller | Domain 3 of 10: Behavior Regulation</div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div style="text-align: center; font-size: 12px; margin-bottom: 20px;">
+                    Domain Progress: 15 of 28 tasks completed
+                </div>
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div class="alert-box">⚠️ Intake form flagged behavioral concerns in this domain</div>
+                </div>
+                
+                <div class="content-section" style="max-width: 600px; margin: 0 auto;">
+                    <h3 style="text-align: center;">Task 16 of 28: Responds to Redirection</h3>
+                    
+                    <div style="background: #f8f9fa; padding: 15px; margin: 15px 0; border-radius: 4px;">
+                        <strong>From Intake Form:</strong><br>
+                        <em>"Child has extreme meltdowns and cannot transition between activities"</em>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <strong>Primary Scoring (0-6):</strong><br>
+                        <div style="margin: 10px 0;">
+                            <label><input type="radio" name="score1" value="0"> 0 - Cannot perform at all</label><br>
+                            <label><input type="radio" name="score1" value="1"> 1 - Severe difficulty</label><br>
+                            <label><input type="radio" name="score1" value="2"> 2 - Moderate difficulty</label><br>
+                            <label><input type="radio" name="score1" value="3" checked> 3 - Mild difficulty</label><br>
+                            <label><input type="radio" name="score1" value="4"> 4 - Minimal assistance needed</label><br>
+                            <label><input type="radio" name="score1" value="5"> 5 - Independent with setup</label><br>
+                            <label><input type="radio" name="score1" value="6"> 6 - Completely independent</label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <strong>Alternative Scoring (0-3):</strong><br>
+                        <div style="margin: 10px 0;">
+                            <label><input type="radio" name="alt_score1" value="0"> 0 - No</label><br>
+                            <label><input type="radio" name="alt_score1" value="1"> 1 - Sometimes</label><br>
+                            <label><input type="radio" name="alt_score1" value="2"> 2 - Usually</label><br>
+                            <label><input type="radio" name="alt_score1" value="3"> 3 - Always</label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <strong>Clinical Observations:</strong><br>
+                        <textarea placeholder="Document your observations for this task..." style="width: 100%; height: 80px; margin-top: 5px;"></textarea>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="button secondary">← Previous Task</button>
+                        <button class="button secondary">Save & Exit</button>
+                        <button class="button">Next Task →</button>
+                    </div>
+                </div>
+            </div>
+            <div class="notes">Simplified focus: One task at a time, relevant intake context, clear scoring options, minimal distractions</div>
+        </div>
+
+        <!-- 5. Report Generation & Editing (Focused) -->
+        <div class="wireframe">
+            <h2>5. Report Generation & Editing Interface</h2>
+            <div class="wireframe-content">
+                <div class="header-bar">OTRACK | Report Editor - Sarah Miller Assessment Report</div>
+                
+                <div style="margin-bottom: 20px; text-align: center;">
+                    <button class="button secondary">← Back to Dashboard</button>
+                    <button class="button secondary">Save Draft</button>
+                    <button class="button">Export PDF</button>
+                    <button class="button">Export DOCX</button>
+                </div>
+                
+                <div style="background: white; border: 1px solid #ccc; min-height: 600px; padding: 30px; font-size: 14px; line-height: 1.6;">
+                    <div style="text-align: center; border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 25px;">
+                        <h2 style="margin: 0;">OCCUPATIONAL THERAPY ASSESSMENT REPORT</h2>
+                        <div style="margin-top: 10px;">
+                            <strong>Patient:</strong> Sarah Miller | <strong>DOB:</strong> 01/15/2017 | <strong>Age:</strong> 8 years<br>
+                            <strong>Assessment Date:</strong> May 28, 2025 | <strong>Therapist:</strong> Gwen Johnson, OTR/L
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: #4CAF50; border-bottom: 1px solid #4CAF50; padding-bottom: 5px;">REFERRAL INFORMATION</h3>
+                        <div style="background: #f8f9fa; padding: 15px; border-left: 4px solid #4CAF50;">
+                            <div contenteditable="true" style="outline: none;">
+                                Sarah was referred for occupational therapy evaluation by Dr. Smith due to concerns regarding behavioral regulation, sensory processing, and motor skill development. Parent reports significant challenges with daily transitions and self-regulation skills.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: #4CAF50; border-bottom: 1px solid #4CAF50; padding-bottom: 5px;">ASSESSMENT RESULTS</h3>
+                        <div style="background: #f8f9fa; padding: 15px; border-left: 4px solid #4CAF50;">
+                            <strong>OTRACK Domain Scores:</strong><br>
+                            <div style="margin: 10px 0;">
+                                • Safety & Judgment: 4.2/6 (Within functional limits)<br>
+                                • Motor Skills: 3.8/6 (Below age expectations)<br>
+                                • Behavior Regulation: 2.9/6 (Significant concerns identified)<br>
+                                • Sensory Processing: 3.1/6 (Areas for intervention noted)
+                            </div>
+                            
+                            <div contenteditable="true" style="outline: none; margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                                Assessment reveals significant challenges in behavioral regulation and sensory processing that impact Sarah's ability to participate in age-appropriate activities. Motor skills show mild delays that may benefit from targeted intervention.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: #4CAF50; border-bottom: 1px solid #4CAF50; padding-bottom: 5px;">CLINICAL OBSERVATIONS</h3>
+                        <div style="background: #f8f9fa; padding: 15px; border-left: 4px solid #4CAF50;">
+                            <div contenteditable="true" style="outline: none;">
+                                During the assessment, Sarah demonstrated difficulty with task transitions and required multiple verbal and visual cues to maintain attention to structured activities. She showed preference for proprioceptive input and benefited from movement breaks between tasks.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="color: #4CAF50; border-bottom: 1px solid #4CAF50; padding-bottom: 5px;">RECOMMENDATIONS</h3>
+                        <div style="background: #f8f9fa; padding: 15px; border-left: 4px solid #4CAF50;">
+                            <div contenteditable="true" style="outline: none;">
+                                <strong>1. Sensory Regulation:</strong> Implement sensory breaks every 30 minutes during structured activities<br><br>
+                                <strong>2. Behavioral Support:</strong> Develop visual schedule for daily transitions and routines<br><br>
+                                <strong>3. Motor Skills:</strong> Weekly OT sessions focusing on fine motor development and bilateral coordination<br><br>
+                                <strong>4. Home Program:</strong> Provide family with sensory diet activities and environmental modifications
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 15px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <strong>Therapist Signature:</strong><br>
+                                _________________________________<br>
+                                Gwen Johnson, OTR/L
+                            </div>
+                            <div>
+                                <strong>Date:</strong> May 28, 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; text-align: center;">
+                    <button class="button secondary">Add Section</button>
+                    <button class="button secondary">Change Template</button>
+                    <button class="button">Finalize Report</button>
+                </div>
+            </div>
+            <div class="notes">Features: Live editing, professional formatting, auto-populated sections, multiple export options, template customization</div>
+        </div>
+
+        <!-- 6. Assessment Battery Selection -->
+        <div class="wireframe">
+            <h2>6. Assessment Battery Selection & Management</h2>
+            <div class="wireframe-content">
+                <div class="header-bar">OTRACK | Assessment Batteries - Sarah Miller (Age 8)</div>
+                
+                <div class="nav-bar">
+                    <span class="nav-item">Dashboard</span>
+                    <span class="nav-item">Patients</span>
+                    <span class="nav-item active">Assessments</span>
+                    <span class="nav-item">Reports</span>
+                </div>
+                
+                <div class="sidebar">
+                    <h4>Patient Info</h4>
+                    <div><strong>Sarah Miller</strong></div>
+                    <div>Age: 8 years</div>
+                    <div>MRN: 12345</div>
+                    <div>Diagnosis: ADHD</div>
+                    
+                    <h4>Intake Status</h4>
+                    <div style="color: #28a745;">✓ Complete</div>
+                    <div>High priority flags: 3</div>
+                    
+                    <button class="button secondary" style="width: 100%; margin-top: 10px;">View Intake Summary</button>
+                </div>
+                
+                <div class="main-content">
+                    <h3>Select Assessment Batteries</h3>
+                    <div style="background: #e7f3ff; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                        <strong>📋 Recommendation:</strong> Based on intake responses, we recommend starting with OTRACK Core domains and adding Sensory Profile due to flagged concerns.
+                    </div>
+                    
+                    <div class="assessment-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-bottom: 30px;">
+                        <div class="assessment-item" style="border: 2px solid #4CAF50; background: #f0fff0;">
+                            <h4 style="margin: 0 0 10px 0; color: #4CAF50;">✓ OTRACK Core Assessment</h4>
+                            <div style="font-size: 12px; margin-bottom: 10px;">
+                                <strong>10 Domains | 498 Tasks</strong><br>
+                                Comprehensive OT evaluation
+                            </div>
+                            <div style="font-size: 11px; color: #666;">
+                                Status: <span style="color: #4CAF50;">Ready to begin</span><br>
+                                Est. time: 45-60 minutes
+                            </div>
+                            <button class="button" style="width: 100%; margin-top: 10px;">Start Assessment</button>
+                        </div>
+                        
+                        <div class="assessment-item" style="border: 2px solid #ff9800; background: #fff8e1;">
+                            <h4 style="margin: 0 0 10px 0; color: #ff9800;">⚠️ Sensory Profile</h4>
+                            <div style="font-size: 12px; margin-bottom: 10px;">
+                                <strong>Standardized Tool</strong><br>
+                                Sensory processing evaluation
+                            </div>
+                            <div style="font-size: 11px; color: #666;">
+                                Status: <span style="color: #ff9800;">Recommended</span><br>
+                                Est. time: 15-20 minutes
+                            </div>
+                            <button class="button" style="width: 100%; margin-top: 10px; background: #ff9800;">Add to Session</button>
+                        </div>
+                        
+                        <div class="assessment-item" style="border: 1px solid #ccc;">
+                            <h4 style="margin: 0 0 10px 0; color: #666;">Worker Role Interview (WRI)</h4>
+                            <div style="font-size: 12px; margin-bottom: 10px;">
+                                <strong>MOHO-based Tool</strong><br>
+                                Work/role assessment
+                            </div>
+                            <div style="font-size: 11px; color: #666;">
+                                Status: Available<br>
+                                Est. time: 20-30 minutes
+                            </div>
+                            <button class="button secondary" style="width: 100%; margin-top: 10px;">Add to Session</button>
+                        </div>
+                        
+                        <div class="assessment-item" style="border: 1px solid #ccc;">
+                            <h4 style="margin: 0 0 10px 0; color: #666;">OSA (Occupational Self Assessment)</h4>
+                            <div style="font-size: 12px; margin-bottom: 10px;">
+                                <strong>Self-Report Tool</strong><br>
+                                Client perception of competence
+                            </div>
+                            <div style="font-size: 11px; color: #666;">
+                                Status: Available<br>
+                                Est. time: 10-15 minutes
+                            </div>
+                            <button class="button secondary" style="width: 100%; margin-top: 10px;">Add to Session</button>
+                        </div>
+                        
+                        <div class="assessment-item" style="border: 1px solid #ccc;">
+                            <h4 style="margin: 0 0 10px 0; color: #666;">AMPS (Assessment of Motor and Process Skills)</h4>
+                            <div style="font-size: 12px; margin-bottom: 10px;">
+                                <strong>Observational Tool</strong><br>
+                                ADL performance evaluation
+                            </div>
+                            <div style="font-size: 11px; color: #666;">
+                                Status: Available<br>
+                                Est. time: 30-45 minutes
+                            </div>
+                            <button class="button secondary" style="width: 100%; margin-top: 10px;">Add to Session</button>
+                        </div>
+                        
+                        <div class="assessment-item" style="border: 1px dashed #ccc; background: #f9f9f9;">
+                            <h4 style="margin: 0 0 10px 0; color: #666;">+ Custom Assessment</h4>
+                            <div style="font-size: 12px; margin-bottom: 10px;">
+                                Add your own assessment tools<br>
+                                or clinical observations
+                            </div>
+                            <div style="font-size: 11px; color: #666;">
+                                Status: Available<br>
+                                Est. time: Variable
+                            </div>
+                            <button class="button secondary" style="width: 100%; margin-top: 10px;">Create Custom</button>
+                        </div>
+                    </div>
+                    
+                    <h3>Current Assessment Session</h3>
+                    <div class="content-section" style="background: #f8f9fa;">
+                        <h4 style="margin: 0 0 15px 0;">Selected Assessments:</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
+                            <div style="background: #4CAF50; color: white; padding: 8px 12px; border-radius: 20px; font-size: 12px;">
+                                OTRACK Core ✓
+                            </div>
+                            <div style="background: #ff9800; color: white; padding: 8px 12px; border-radius: 20px; font-size: 12px;">
+                                Sensory Profile
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div>
+                                <strong>Total Estimated Time:</strong> 60-80 minutes<br>
+                                <strong>Session Date:</strong> May 28, 2025
+                            </div>
+                            <div>
+                                <button class="button secondary">Save Session</button>
+                                <button class="button">Begin Assessments</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Assessment History</h3>
+                    <table class="data-table">
+                        <tr>
+                            <th>Date</th>
+                            <th>Assessments Completed</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <td>05/15/2025</td>
+                            <td>OTRACK Core, Sensory Profile</td>
+                            <td>65 minutes</td>
+                            <td style="color: #28a745;">Complete</td>
+                            <td>
+                                <button class="button" style="padding: 4px 8px; font-size: 12px;">View Results</button>
+                                <button class="button secondary" style="padding: 4px 8px; font-size: 12px;">Export</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>04/28/2025</td>
+                            <td>OTRACK Core</td>
+                            <td>45 minutes</td>
+                            <td style="color: #ffc107;">Partial</td>
+                            <td>
+                                <button class="button" style="padding: 4px 8px; font-size: 12px;">Resume</button>
+                                <button class="button secondary" style="padding: 4px 8px; font-size: 12px;">Archive</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="notes">Features: Multiple assessment batteries, AI recommendations, session planning, time estimates, assessment history</div>
+        </div>
+
+        <!-- 7. Patient Portal -->
+        <div class="wireframe">
+            <h2>7. Patient Portal (Pre-Assessment Form)</h2>
+            <div class="wireframe-content">
+                <div class="header-bar">OTRACK Patient Portal | Pre-Assessment Form</div>
+                
+                <div class="content-section">
+                    <h3>Welcome! Please complete this form before your appointment.</h3>
+                    
+                    <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin-bottom: 20px;">
+                        <strong>⚠️ CONSENT VERIFICATION</strong><br>
+                        I confirm that I am the parent/legal guardian of the child being assessed, or I have been given explicit permission by the parent/legal guardian to complete this intake form on their behalf.
+                        <div style="margin-top: 10px;">
+                            <label><input type="checkbox" required> Yes, I have authority to complete this form</label>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%;"></div>
+                    </div>
+                    <div style="font-size: 12px; text-align: center;">Page 2 of 8 | Estimated time remaining: 15 minutes</div>
+                </div>
+                
+                <div class="nav-bar">
+                    <span class="nav-item">1. Personal Info ✓</span>
+                    <span class="nav-item active">2. Concerns</span>
+                    <span class="nav-item">3. Family History</span>
+                    <span class="nav-item">4. Birth History</span>
+                    <span class="nav-item">5. Medical Health</span>
+                    <span class="nav-item">6. Specialists</span>
+                    <span class="nav-item">7. Development</span>
+                    <span class="nav-item">8. Daily Challenges</span>
+                </div>
+                
+                <div class="content-section">
+                    <h3>Tell Us About Your Concerns</h3>
+                    
+                    <div class="form-field">
+                        <strong>What are your primary concerns? Why did you bring your child for evaluation?</strong>
+                        <textarea style="width: 100%; height: 80px; margin-top: 5px;" placeholder="Please describe your main concerns..."></textarea>
+                    </div>
+                    
+                    <div class="form-field">
+                        <strong>When did you first become concerned about these behaviors?</strong>
+                        <textarea style="width: 100%; height: 60px; margin-top: 5px;" placeholder="Describe when you first noticed these issues..."></textarea>
+                    </div>
+                    
+                    <div class="form-field">
+                        <strong>What does your child enjoy (favorite activities, play, etc.)?</strong>
+                        <textarea style="width: 100%; height: 60px; margin-top: 5px;" placeholder="Tell us about your child's interests and strengths..."></textarea>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="button secondary">← Previous</button>
+                        <button class="button secondary">Save & Exit</button>
+                        <button class="button">Next →</button>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 15px; padding: 10px; background: #e7f3ff; border-radius: 4px; font-size: 12px;">
+                    ℹ️ Your responses are automatically saved. You can complete this form in multiple sessions if needed.
+                </div>
+            </div>
+            <div class="notes">Features: Progress tracking, auto-save, multi-session completion, responsive design, clear navigation</div>
+        </div>
+    </div>
+</body>
+</html>

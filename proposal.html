@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTRACK System Architecture</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #4a6741);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        
+        .architecture-diagram {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .flow-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .flow-box {
+            background: white;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .flow-box.patient {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #ffe6e6, #fff);
+        }
+        
+        .flow-box.system {
+            border-color: #2ecc71;
+            background: linear-gradient(135deg, #e6ffe6, #fff);
+        }
+        
+        .flow-box.therapist {
+            border-color: #f39c12;
+            background: linear-gradient(135deg, #fff3e0, #fff);
+        }
+        
+        .flow-box h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .flow-box p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #5a6c7d;
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #3498db;
+            align-self: center;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card.must-have {
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .feature-card.nice-to-have {
+            border-left: 5px solid #f39c12;
+        }
+        
+        .feature-card h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .phase {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .phase::before {
+            content: attr(data-phase);
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .phase h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+        }
+        
+        .compliance-badges {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: #2c3e50;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .badge.security {
+            background: #e74c3c;
+        }
+        
+        .badge.privacy {
+            background: #8e44ad;
+        }
+        
+        @media (max-width: 768px) {
+            .flow-row {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>OTRACK Digital Assessment System</h1>
+            <p>Comprehensive Occupational Therapy Assessment & Reporting Platform</p>
+        </div>
+        
+        <div class="content">
+            <!-- System Architecture -->
+            <div class="section">
+                <h2>🏗️ System Architecture Overview</h2>
+                <div class="architecture-diagram">
+                    <div class="flow-container">
+                        <div class="flow-row">
+                            <div class="flow-box patient">
+                                <h3>👤 Patient Portal</h3>
+                                <p>Pre-assessment forms<br>Secure access via email/portal<br>Save & resume capability</p>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="flow-box system">
+                                <h3>🤖 AI Analysis Engine</h3>
+                                <p>Auto-flag concerning responses<br>Risk assessment<br>Alert generation</p>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="flow-box therapist">
+                                <h3>👩‍⚕️ Therapist Dashboard</h3>
+                                <p>Review flagged items<br>Conduct OTRACK assessment<br>Generate reports</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flow-row">
+                            <div class="flow-box system">
+                                <h3>📊 OTRACK Assessment</h3>
+                                <p>10 domains, 83 subcategories<br>498 individual tasks<br>Smart scoring (0-6 & 0-3 scales)</p>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="flow-box system">
+                                <h3>📋 External Tools Integration</h3>
+                                <p>WRI, OSA, AMPS, Sensory Profile<br>Manual input interface<br>Standardized scoring</p>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="flow-box therapist">
+                                <h3>📄 Report Generation</h3>
+                                <p>Auto-generated clinical reports<br>Editable templates<br>PDF/DOCX export</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Features -->
+            <div class="section">
+                <h2>🎯 Core Features & Requirements</h2>
+                <div class="feature-grid">
+                    <div class="feature-card must-have">
+                        <h3>🔴 Must-Have Features</h3>
+                        <ul class="feature-list">
+                            <li>Pre-assessment forms (adult & pediatric)</li>
+                            <li>AI-powered response analysis & flagging</li>
+                            <li>Data integration into assessment templates</li>
+                            <li>Save/resume incomplete forms</li>
+                            <li>Multi-tenant clinic management</li>
+                            <li>OTRACK assessment interface (all 10 domains)</li>
+                            <li>Professional report generation</li>
+                            <li>GDPR/HIPAA compliance</li>
+                            <li>Secure patient data management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card nice-to-have">
+                        <h3>🟡 Nice-to-Have Features</h3>
+                        <ul class="feature-list">
+                            <li>Multiple completion methods (email, portal, tablet)</li>
+                            <li>Caregiver/family member access with consent</li>
+                            <li>Advanced analytics & outcome tracking</li>
+                            <li>Mobile-optimized interface</li>
+                            <li>Integration APIs for external systems</li>
+                            <li>Customizable report templates</li>
+                            <li>Appointment scheduling integration</li>
+                            <li>Progress tracking dashboards</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Development Timeline -->
+            <div class="section">
+                <h2>⏱️ Development Timeline & Phases</h2>
+                <div class="timeline">
+                    <div class="phase" data-phase="Phase 1">
+                        <h3>Foundation & Core Setup (Weeks 1-4)</h3>
+                        <p><strong>Deliverables:</strong> User authentication, clinic management, database design, basic patient records</p>
+                        <p><strong>Focus:</strong> Security foundation, multi-tenant architecture, GDPR/HIPAA compliance framework</p>
+                    </div>
+                    
+                    <div class="phase" data-phase="Phase 2">
+                        <h3>Pre-Assessment System (Weeks 5-8)</h3>
+                        <p><strong>Deliverables:</strong> Dynamic forms, AI analysis engine, alert system, save/resume functionality</p>
+                        <p><strong>Focus:</strong> Patient-facing interface, intelligent response processing, therapist notifications</p>
+                    </div>
+                    
+                    <div class="phase" data-phase="Phase 3">
+                        <h3>OTRACK Assessment Interface (Weeks 9-14)</h3>
+                        <p><strong>Deliverables:</strong> All 10 assessment domains, complex scoring logic, data integration</p>
+                        <p><strong>Focus:</strong> Core assessment functionality, scoring calculations, user experience</p>
+                    </div>
+                    
+                    <div class="phase" data-phase="Phase 4">
+                        <h3>Report Generation & Export (Weeks 15-18)</h3>
+                        <p><strong>Deliverables:</strong> Professional report templates, PDF/DOCX export, editing interface</p>
+                        <p><strong>Focus:</strong> Clinical documentation, professional formatting, therapist review workflow</p>
+                    </div>
+                    
+                    <div class="phase" data-phase="Phase 5">
+                        <h3>External Tools & Polish (Weeks 19-22)</h3>
+                        <p><strong>Deliverables:</strong> WRI/OSA/AMPS integration, nice-to-have features, testing & refinement</p>
+                        <p><strong>Focus:</strong> Additional assessment tools, performance optimization, user feedback integration</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Specifications -->
+            <div class="section">
+                <h2>🔧 Technical Specifications</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🏗️ Architecture</h3>
+                        <ul class="feature-list">
+                            <li>Modern web application (React/Next.js)</li>
+                            <li>Cloud-hosted database (PostgreSQL)</li>
+                            <li>RESTful API architecture</li>
+                            <li>Responsive design (desktop/tablet/mobile)</li>
+                            <li>Real-time data synchronization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>🔒 Security & Compliance</h3>
+                        <div class="compliance-badges">
+                            <div class="badge security">HIPAA Compliant</div>
+                            <div class="badge privacy">GDPR Ready</div>
+                            <div class="badge">256-bit Encryption</div>
+                        </div>
+                        <ul class="feature-list">
+                            <li>End-to-end data encryption</li>
+                            <li>Audit trails & access logging</li>
+                            <li>Role-based access control</li>
+                            <li>Regular security assessments</li>
+                            <li>Data retention policies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Metrics -->
+            <div class="section">
+                <h2>📈 Success Metrics & Outcomes</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>⏱️ Efficiency Gains</h3>
+                        <ul class="feature-list">
+                            <li>75% reduction in manual scoring time</li>
+                            <li>50% faster report generation</li>
+                            <li>90% reduction in data entry errors</li>
+                            <li>Automated flagging of 95% critical issues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>📊 Quality Improvements</h3>
+                        <ul class="feature-list">
+                            <li>Standardized assessment protocols</li>
+                            <li>Consistent professional reporting</li>
+                            <li>Enhanced clinical documentation</li>
+                            <li>Improved patient outcome tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
